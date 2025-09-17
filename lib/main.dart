@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/components/ds_icon.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/components/ds_text.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/gallery/buttons_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/colors_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/icons_gallery.dart"; // ⬅️ nuevo
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/spacing_gallery.dart";
@@ -87,6 +88,15 @@ class _GalleryMenu extends StatelessWidget {
               MaterialPageRoute(builder: (_) => const SpacingGallery()),
             ),
           ),
+          ListTile(
+            title: DSText.labels("Buttons Gallery"),
+            subtitle: DSText.paragraph("XS · SM · MD · LG · XL · XXL"),
+            trailing: const DSIcon.md(DSIcons.next),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const DSButtonGallery()),
+            ),
+          )
         ],
       ),
     );
