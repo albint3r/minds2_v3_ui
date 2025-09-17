@@ -1,8 +1,11 @@
 import "package:flutter/material.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/components/ds_icon.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/components/ds_text.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/colors_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/icons_gallery.dart"; // ⬅️ nuevo
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/typography_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/theme/theme_config.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/tokens/icon_tokens.dart";
 
 void main() {
   runApp(const DSApp());
@@ -33,7 +36,7 @@ class _GalleryMenu extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Design System · Gallery"),
+        title: DSText.heading1("Design System · Gallery"),
         backgroundColor: cs.surface,
         foregroundColor: cs.onSurface,
         elevation: 0,
@@ -41,9 +44,11 @@ class _GalleryMenu extends StatelessWidget {
       body: ListView(
         children: [
           ListTile(
-            title: const Text("Colors Gallery"),
-            subtitle: const Text("Ramps · Brand · Ink · Secondary · Alerts"),
-            trailing: const Icon(Icons.chevron_right),
+            title: DSText.labels("Colors Gallery"),
+            subtitle: DSText.paragraph(
+              "Ramps · Brand · Ink · Secondary · Alerts",
+            ),
+            trailing: const DSIcon.md(DSIcons.next),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const ColorsGallery()),
@@ -51,9 +56,11 @@ class _GalleryMenu extends StatelessWidget {
           ),
           const Divider(height: 1),
           ListTile(
-            title: const Text("Typography Gallery"),
-            subtitle: const Text("Nunito · Headings · Titles · Body · Labels"),
-            trailing: const Icon(Icons.chevron_right),
+            title: DSText.labels("Typography Gallery"),
+            subtitle: DSText.paragraph(
+              "Nunito · Headings · Titles · Body · Labels",
+            ),
+            trailing: const DSIcon.md(DSIcons.next),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const TypographyGallery()),
@@ -61,9 +68,9 @@ class _GalleryMenu extends StatelessWidget {
           ),
           const Divider(height: 1),
           ListTile(
-            title: const Text("Icons Gallery"),
-            subtitle: const Text("Íconos maestros del DS"),
-            trailing: const Icon(Icons.chevron_right),
+            title: DSText.labels("Icons Gallery"),
+            subtitle: DSText.paragraph("Íconos maestros del DS"),
+            trailing: const DSIcon.md(DSIcons.next),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const IconsGallery()),
