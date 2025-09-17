@@ -1,5 +1,5 @@
-// lib/core/presentation/design_system/gallery/typography_gallery.dart
 import "package:flutter/material.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/components/ds_text.dart";
 
 class TypographyGallery extends StatelessWidget {
   const TypographyGallery({super.key});
@@ -7,27 +7,26 @@ class TypographyGallery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
-    final tt = Theme.of(context).textTheme;
 
-    // Orden y nombres EXACTOS de Figma
-    final rows = <_Spec>[
-      _Spec("Heading 1", tt.displayLarge!, 47.78),
-      _Spec("Heading 2", tt.displayMedium!, 39.81),
-      _Spec("Heading 3", tt.displaySmall!, 33.18),
-      _Spec("Heading 4", tt.headlineMedium!, 27.65),
-      _Spec("Overline", tt.titleLarge!, 25.00),
-      _Spec("Menú Nav Bar", tt.titleMedium!, 20.00),
-      _Spec("Filtros", tt.titleSmall!, 19.00),
-      _Spec("Imput...", tt.bodyLarge!, 16.00), // así como viene en tu captura
-      _Spec("Labels", tt.bodyMedium!, 14.00),
-      _Spec("Tablas", tt.bodySmall!, 14.00),
-      _Spec("Botón", tt.labelLarge!, 14.00),
-      _Spec("Paragraph", tt.labelSmall!, 10.00),
+    // Orden y nombres en inglés (como Figma), usando VARIANT + PX
+    final rows = <({String label, DSTextVariant variant, double px})>[
+      (label: "Heading 1", variant: DSTextVariant.heading1, px: 47.78),
+      (label: "Heading 2", variant: DSTextVariant.heading2, px: 39.81),
+      (label: "Heading 3", variant: DSTextVariant.heading3, px: 33.18),
+      (label: "Heading 4", variant: DSTextVariant.heading4, px: 27.65),
+      (label: "Overline", variant: DSTextVariant.overline, px: 25.00),
+      (label: "Nav Bar", variant: DSTextVariant.navBar, px: 20.00),
+      (label: "Filters", variant: DSTextVariant.filters, px: 19.00),
+      (label: "Input…", variant: DSTextVariant.input, px: 16.00),
+      (label: "Labels", variant: DSTextVariant.labels, px: 14.00),
+      (label: "Tables", variant: DSTextVariant.tables, px: 14.00),
+      (label: "Button", variant: DSTextVariant.button, px: 14.00),
+      (label: "Paragraph", variant: DSTextVariant.paragraph, px: 10.00),
     ];
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Design System · Typography"),
+        title: DSText.labels("Design System · Typography"),
         backgroundColor: cs.surface,
         foregroundColor: cs.onSurface,
         elevation: 0,
@@ -44,7 +43,7 @@ class TypographyGallery extends StatelessWidget {
 class _TypographyTable extends StatelessWidget {
   const _TypographyTable({required this.rows});
 
-  final List<_Spec> rows;
+  final List<({String label, DSTextVariant variant, double px})> rows;
 
   @override
   Widget build(BuildContext context) {
@@ -63,33 +62,107 @@ class _TypographyTable extends StatelessWidget {
           fontWeight: FontWeight.w700,
           letterSpacing: .6,
         ),
-        columns: const [
-          DataColumn(label: Text("Name")),
-          DataColumn(label: Text("Weight")),
-          DataColumn(label: Text("PX")),
-          DataColumn(label: Text("REM")),
+        columns: [
+          DataColumn(label: DSText.labels("Name")),
+          DataColumn(label: DSText.labels("Weight")),
+          DataColumn(label: DSText.labels("PX")),
+          DataColumn(label: DSText.labels("REM")),
         ],
-        rows: rows.map((r) => r.toDataRow(context)).toList(),
+        rows: rows.map((r) => _toRow(context, r)).toList(),
       ),
     );
   }
-}
 
-class _Spec {
-  _Spec(this.name, this.style, this.px);
+  DataRow _toRow(
+    BuildContext context,
+    ({String label, DSTextVariant variant, double px}) spec,
+  ) {
+    final sample = spec.label; // mostramos el nombre con su propio estilo
+    final onSurface = Theme.of(context).colorScheme.onSurface;
 
-  final String name;
-  final TextStyle style;
-  final double px;
+    // 1) Widget usando FACTORY de DSText (lo que querías)
+    final widget = _buildDSText(sample, spec.variant, onSurface);
 
-  // Base web típica: 16 px = 1 rem
-  String get rem => (px / 16.0)
-      .toStringAsFixed(3)
-      .replaceFirst(RegExp(r"0+$"), "")
-      .replaceFirst(RegExp(r"\.$"), "");
+    // 2) Peso/estilo resuelto por variant (sin tocar .style del widget)
+    final resolved = _resolveStyle(context, spec.variant);
+    final weightLabel = _weightLabel(resolved.fontWeight ?? FontWeight.w400);
 
-  String get weightLabel {
-    final w = style.fontWeight ?? FontWeight.w400;
+    // 3) REM a partir de PX
+    final pxStr = _px(spec.px);
+    final remStr = _rem(spec.px);
+
+    return DataRow(
+      cells: [
+        DataCell(widget),
+        DataCell(Text(weightLabel)),
+        DataCell(Text(pxStr)),
+        DataCell(Text(remStr)),
+      ],
+    );
+  }
+
+  // FACTORIES de DSText para cada variant
+  Widget _buildDSText(String text, DSTextVariant v, Color color) {
+    switch (v) {
+      case DSTextVariant.heading1:
+        return DSText.heading1(text, color: color);
+      case DSTextVariant.heading2:
+        return DSText.heading2(text, color: color);
+      case DSTextVariant.heading3:
+        return DSText.heading3(text, color: color);
+      case DSTextVariant.heading4:
+        return DSText.heading4(text, color: color);
+      case DSTextVariant.overline:
+        return DSText.overline(text, color: color);
+      case DSTextVariant.navBar:
+        return DSText.navBar(text, color: color);
+      case DSTextVariant.filters:
+        return DSText.filters(text, color: color);
+      case DSTextVariant.input:
+        return DSText.input(text, color: color);
+      case DSTextVariant.labels:
+        return DSText.labels(text, color: color);
+      case DSTextVariant.tables:
+        return DSText.tables(text, color: color);
+      case DSTextVariant.button:
+        return DSText.button(text, color: color);
+      case DSTextVariant.paragraph:
+        return DSText.paragraph(text, color: color);
+    }
+  }
+
+  // Resolver TextStyle desde el Theme por variant (sin construir el widget)
+  TextStyle _resolveStyle(BuildContext ctx, DSTextVariant v) {
+    final t = Theme.of(ctx).textTheme;
+    switch (v) {
+      case DSTextVariant.heading1:
+        return t.displayLarge!;
+      case DSTextVariant.heading2:
+        return t.displayMedium!;
+      case DSTextVariant.heading3:
+        return t.displaySmall!;
+      case DSTextVariant.heading4:
+        return t.headlineMedium!;
+      case DSTextVariant.overline:
+        return t.titleLarge!;
+      case DSTextVariant.navBar:
+        return t.titleMedium!;
+      case DSTextVariant.filters:
+        return t.titleSmall!;
+      case DSTextVariant.input:
+        return t.bodyLarge!;
+      case DSTextVariant.labels:
+        return t.bodyMedium!;
+      case DSTextVariant.tables:
+        return t.bodySmall!;
+      case DSTextVariant.button:
+        return t.labelLarge!;
+      case DSTextVariant.paragraph:
+        return t.labelSmall!;
+    }
+  }
+
+  String _weightLabel(FontWeight w) {
     if (w.index >= FontWeight.w700.index) return "Bold";
     if (w.index >= FontWeight.w600.index) return "Semibold";
     if (w.index >= FontWeight.w500.index) return "Medium";
@@ -97,25 +170,16 @@ class _Spec {
     return "Regular";
   }
 
-  DataRow toDataRow(BuildContext context) {
-    final onSurface = Theme.of(context).colorScheme.onSurface;
-
-    // Solo ajustar color; cualquier decoración (underline de Input…) ya viene en el token
-    final sampleStyle = style.copyWith(color: onSurface);
-
-    return DataRow(
-      cells: [
-        DataCell(Text(name, style: sampleStyle)),
-        // muestra el texto con SU estilo
-        DataCell(Text(weightLabel)),
-        DataCell(Text(_px(px))),
-        DataCell(Text("$rem rem")),
-      ],
-    );
-  }
-
-  static String _px(double v) {
+  String _px(double v) {
     final s = v.toStringAsFixed(v % 1 == 0 ? 0 : 2);
     return "$s px";
+  }
+
+  String _rem(double px) {
+    final s = (px / 16.0)
+        .toStringAsFixed(3)
+        .replaceFirst(RegExp(r"0+$"), "")
+        .replaceFirst(RegExp(r"\.$"), "");
+    return "$s rem";
   }
 }
