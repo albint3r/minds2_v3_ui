@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/colors_gallery.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/gallery/icons_gallery.dart"; // ⬅️ nuevo
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/typography_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/theme/theme_config.dart";
 
@@ -12,12 +13,11 @@ class DSApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = ThemeConfig(); // si luego usas injectable, lo reemplazas
+    final theme = ThemeConfig();
 
     return MaterialApp(
       title: "Minds2 DS",
-      theme: theme.light, // Nunito + ColorScheme del DS
-      // darkTheme: theme.dark,  // cuando lo tengas
+      theme: theme.light,
       home: const _GalleryMenu(),
       debugShowCheckedModeBanner: false,
     );
@@ -57,6 +57,16 @@ class _GalleryMenu extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const TypographyGallery()),
+            ),
+          ),
+          const Divider(height: 1),
+          ListTile(
+            title: const Text("Icons Gallery"),
+            subtitle: const Text("Íconos maestros del DS"),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const IconsGallery()),
             ),
           ),
         ],

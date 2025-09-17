@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/theme/color_scheme_config.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/tokens/icon_tokens.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/typography_tokens.dart";
 
 class ThemeConfig {
@@ -61,6 +62,22 @@ class ThemeConfig {
           textStyle: tt.labelLarge,
         ),
       ),
+      // añade a tu ThemeConfig (no cambies lo demás)
+      iconTheme: IconThemeData(
+        color: colorScheme.onSurface,
+        size: DSIconSize.md,
+      ),
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(
+          foregroundColor: colorScheme.onSurface,
+          disabledForegroundColor: DSIconColors.disabled(colorScheme),
+          backgroundColor: Colors.transparent,
+          splashFactory: InkRipple.splashFactory,
+          padding: const EdgeInsets.all(8),
+          minimumSize: const Size(40, 40), // target táctil
+        ),
+      ),
+
     );
   }
 }
