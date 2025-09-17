@@ -23,5 +23,4 @@ class AppConfig {
   static Duration get receiveTimeout => const Duration(seconds: 30);
 
   static String get environment => isDebug ? "development" : "production";
-
 }
