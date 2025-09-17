@@ -69,12 +69,17 @@ class DSButton extends StatelessWidget {
 
   // 🔹 Estilos por variante (siempre ElevatedButton)
   ButtonStyle get _style {
+    const minimumSize=  Size(
+      DSButtonTokens.minWidth,
+      DSButtonTokens.minHeight,
+    );
+
     switch (variant) {
       case DSButtonVariant.primary:
         return ElevatedButton.styleFrom(
           backgroundColor: DSButtonTokens.primaryBg,
           padding: DSButtonTokens.padding,
-          minimumSize: const Size(DSButtonTokens.minWidth, 0),
+          minimumSize: minimumSize,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(DSButtonTokens.radius),
           ),
@@ -85,7 +90,7 @@ class DSButton extends StatelessWidget {
           foregroundColor: DSButtonTokens.outlineLabel,
           side: BorderSide(color: DSButtonTokens.outlineBorder, width: 1.5),
           padding: DSButtonTokens.padding,
-          minimumSize: const Size(DSButtonTokens.minWidth, 0),
+          minimumSize: minimumSize,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(DSButtonTokens.radius),
           ),
@@ -97,7 +102,7 @@ class DSButton extends StatelessWidget {
         return ElevatedButton.styleFrom(
           backgroundColor: DSButtonTokens.darkBg,
           padding: DSButtonTokens.padding,
-          minimumSize: const Size(DSButtonTokens.minWidth, 0),
+          minimumSize: minimumSize,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(DSButtonTokens.radius),
           ),

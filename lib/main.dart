@@ -88,9 +88,10 @@ class _GalleryMenu extends StatelessWidget {
               MaterialPageRoute(builder: (_) => const SpacingGallery()),
             ),
           ),
+          const Divider(height: 1),
           ListTile(
             title: DSText.labels("Buttons Gallery"),
-            subtitle: DSText.paragraph("XS · SM · MD · LG · XL · XXL"),
+            subtitle: DSText.paragraph("primary · outline · dark"),
             trailing: const DSIcon.md(DSIcons.next),
             onTap: () => Navigator.push(
               context,
