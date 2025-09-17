@@ -1,0 +1,31 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # --- Nombres / organización ---
+    file_names: true
+    camel_case_types: true
+    sort_constructors_first: true
+    sort_unnamed_constructors_first: true
+
+    # --- Imports / orden ---
+    always_use_package_imports: true
+    directives_ordering: true
+
+    # --- Flutter prácticas ---
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_final_fields: true
+    use_key_in_widget_constructors: true
+
+    # --- Estilo / legibilidad ---
+    require_trailing_commas: true
+    sort_child_properties_last: true
+    prefer_double_quotes: true
+    lines_longer_than_80_chars: false  # cámbialo a true si quieres limitar ancho
+
+    # --- Seguridad / errores comunes ---
+    avoid_print: true
+    use_build_context_synchronously: true
+    close_sinks: true
+    cancel_subscriptions: true
