@@ -1,5 +1,6 @@
 // lib/core/presentation/design_system/gallery/colors_gallery.dart
 import "package:flutter/material.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/components/ds_gap.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/components/ds_text.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/color_tokens.dart";
 
@@ -31,7 +32,7 @@ class ColorsGallery extends StatelessWidget {
             title: "Primary · ink (tipografía / seleccionados)",
             child: _SwatchRow(map: DSColors.primary.ink),
           ),
-          const SizedBox(height: 8),
+          const DSGap.sm(),
           _Section(
             title: "Secondary · gradient",
             child: _GradientPreview(colors: DSColors.secondary.gradient),

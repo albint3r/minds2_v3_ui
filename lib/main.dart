@@ -3,6 +3,7 @@ import "package:minds2_ui_v3/core/presentation/design_system/components/ds_icon.
 import "package:minds2_ui_v3/core/presentation/design_system/components/ds_text.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/colors_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/icons_gallery.dart"; // ⬅️ nuevo
+import "package:minds2_ui_v3/core/presentation/design_system/gallery/spacing_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/typography_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/theme/theme_config.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/icon_tokens.dart";
@@ -74,6 +75,16 @@ class _GalleryMenu extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const IconsGallery()),
+            ),
+          ),
+          const Divider(height: 1),
+          ListTile(
+            title: DSText.labels("Spacing Gallery"),
+            subtitle: DSText.paragraph("XS · SM · MD · LG · XL · XXL"),
+            trailing: const DSIcon.md(DSIcons.next),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const SpacingGallery()),
             ),
           ),
         ],
