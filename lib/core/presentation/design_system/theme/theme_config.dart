@@ -1,42 +1,66 @@
 import "package:flutter/material.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/theme/color_scheme_config.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/tokens/typography_tokens.dart";
 
-// import "app_theme.dart"; // <- donde definiste AppTheme.lightScheme / darkScheme
-
-// @singleton
 class ThemeConfig {
   ThemeData get light =>
       _getThemeData(colorScheme: ColorSchemeConfig.lightScheme);
 
-  // Si aún no tienes darkScheme, puedes usar: AppTheme.lightScheme
-  // ThemeData get dark => _getThemeData(colorScheme: AppTheme.darkScheme);
-
   ThemeData _getThemeData({required ColorScheme colorScheme}) {
+    final tt = DSTypography.textTheme.apply(
+      bodyColor: colorScheme.onSurface,
+      displayColor: colorScheme.onSurface,
+    );
+
+    // Subrayado tipo DS para inputs
+    UnderlineInputBorder _u(Color c) =>
+        UnderlineInputBorder(borderSide: BorderSide(color: c, width: 1.2));
+
     return ThemeData(
       useMaterial3: true,
       colorScheme: colorScheme,
-      // En M3 el fondo base debe venir de surface (no de primary)
       scaffoldBackgroundColor: colorScheme.surface,
       brightness: colorScheme.brightness,
       visualDensity: VisualDensity.standard,
 
-      // // Tus temas por componente, reciben el mismo scheme del DS:
-      // elevatedButtonTheme: CustomElevatedButtonThemeData.themeData(colorScheme),
-      // textTheme: TextThemeData.themeData(colorScheme),
-      // inputDecorationTheme: CustomInputDecoratorThemeData.themeData(colorScheme),
-      // scrollbarTheme: CustomScrollbarThemeData.themeData(colorScheme),
-      textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(foregroundColor: colorScheme.secondary),
-      ),
+      // Tipografía de tokens
+      textTheme: tt,
 
-      // Evitar withOpacity (deprecado) → withValues(alpha: …)
+      // TextSelection (usa scheme, sin withOpacity)
       textSelectionTheme: TextSelectionThemeData(
-        cursorColor: colorScheme.primaryContainer,
+        cursorColor: colorScheme.primary,
         selectionColor: colorScheme.secondary.withValues(alpha: 0.40),
         selectionHandleColor: colorScheme.secondary.withValues(alpha: 0.40),
       ),
 
-      // dataTableTheme: CustomDataTableThemeData.themeData(colorScheme),
+      // Subrayado SOLO en inputs (no en títulos)
+      inputDecorationTheme: InputDecorationTheme(
+        isDense: true,
+        contentPadding: const EdgeInsets.symmetric(vertical: 8),
+        hintStyle: tt.bodyLarge?.copyWith(
+          color: colorScheme.onSurface.withValues(alpha: 0.48),
+        ),
+        labelStyle: tt.bodyLarge?.copyWith(
+          color: colorScheme.onSurface.withValues(alpha: 0.72),
+        ),
+        floatingLabelStyle: tt.bodyLarge?.copyWith(
+          color: colorScheme.primary,
+          fontWeight: FontWeight.w500,
+        ),
+        enabledBorder: _u(colorScheme.outlineVariant),
+        disabledBorder: _u(colorScheme.outline.withValues(alpha: 0.40)),
+        focusedBorder: _u(colorScheme.primary),
+        errorBorder: _u(colorScheme.error),
+        focusedErrorBorder: _u(colorScheme.error),
+      ),
+
+      // Botones de texto
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: colorScheme.secondary,
+          textStyle: tt.labelLarge,
+        ),
+      ),
     );
   }
 }
