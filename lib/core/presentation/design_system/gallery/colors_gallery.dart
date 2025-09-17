@@ -1,9 +1,10 @@
+// lib/core/presentation/design_system/gallery/colors_gallery.dart
 import "package:flutter/material.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/components/ds_text.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/color_tokens.dart";
 
-/// Página simple para visualizar las rampas de color de tu DS.
-/// - Usa DSColors.* en todo momento (también para textos).
-/// - Muestra cada escala como una fila de “swatches” con el tono y su HEX.
+/// Página para visualizar las rampas de color usando tipografía del DS.
+/// - Todos los textos usan DSText.labels()
 class ColorsGallery extends StatelessWidget {
   const ColorsGallery({super.key});
 
@@ -13,7 +14,7 @@ class ColorsGallery extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Design System · Colors"),
+        title: DSText.labels("Design System · Colors", color: cs.onSurface),
         backgroundColor: cs.surface,
         foregroundColor: cs.onSurface,
         elevation: 0,
@@ -62,41 +63,32 @@ class ColorsGallery extends StatelessWidget {
 /// Contenedor con título y cuerpo, usa tokens para bordes y superficies.
 class _Section extends StatelessWidget {
   const _Section({required this.title, required this.child});
+
   final String title;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    final surface = Theme.of(context).colorScheme.surface;
-    final onSurface = Theme.of(context).colorScheme.onSurface;
+    final cs = Theme.of(context).colorScheme;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
-        color: surface,
+        color: cs.surface,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: DSColors.primary.ink[100]!),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Header
+          // Header (usa DSText.labels del DS)
           Padding(
             padding: const EdgeInsets.fromLTRB(12, 10, 12, 6),
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                color: onSurface,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
+            child: DSText.labels(title, color: cs.onSurface),
           ),
           const Divider(height: 1, color: Color(0x1F000000)),
           // Body
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: child,
-          ),
+          Padding(padding: const EdgeInsets.all(12), child: child),
         ],
       ),
     );
@@ -106,6 +98,7 @@ class _Section extends StatelessWidget {
 /// Fila de “swatches” a partir de un Map<int, Color> (25..900).
 class _SwatchRow extends StatelessWidget {
   const _SwatchRow({required this.map});
+
   final Map<int, Color> map;
 
   @override
@@ -128,12 +121,13 @@ class _SwatchRow extends StatelessWidget {
 /// Usa DSColors.primary.ink[25]/[900] como texto según contraste.
 class _SwatchBox extends StatelessWidget {
   const _SwatchBox({required this.tone, required this.color});
+
   final int tone;
   final Color color;
 
   @override
   Widget build(BuildContext context) {
-    // Decidir color de texto usando los tokens del DS (nunca Colors.white/black)
+    // Decidir color de texto usando los tokens del DS (nada de Colors.white/black)
     final useLightInk = color.computeLuminance() < 0.5;
     final textColor = useLightInk
         ? DSColors.primary.ink[25]!
@@ -149,19 +143,13 @@ class _SwatchBox extends StatelessWidget {
         border: Border.all(color: DSColors.primary.ink[100]!),
       ),
       padding: const EdgeInsets.all(8),
-      child: DefaultTextStyle(
-        style: Theme.of(context).textTheme.labelSmall!.copyWith(
-          color: textColor,
-          fontWeight: FontWeight.w600,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("$tone"),
-            const Spacer(),
-            Text(_hex(color)),
-          ],
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          DSText.labels("$tone", color: textColor),
+          const Spacer(),
+          DSText.paragraph(_hex(color), color: textColor),
+        ],
       ),
     );
   }
@@ -178,6 +166,7 @@ class _SwatchBox extends StatelessWidget {
 /// Vista previa horizontal del gradiente secundario.
 class _GradientPreview extends StatelessWidget {
   const _GradientPreview({required this.colors});
+
   final List<Color> colors;
 
   @override
