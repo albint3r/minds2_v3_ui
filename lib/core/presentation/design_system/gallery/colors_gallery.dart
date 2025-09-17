@@ -4,8 +4,8 @@ import "package:minds2_ui_v3/core/presentation/design_system/tokens/color_tokens
 /// Página simple para visualizar las rampas de color de tu DS.
 /// - Usa DSColors.* en todo momento (también para textos).
 /// - Muestra cada escala como una fila de “swatches” con el tono y su HEX.
-class DesignSystemGalleryPage extends StatelessWidget {
-  const DesignSystemGalleryPage({super.key});
+class ColorsGallery extends StatelessWidget {
+  const ColorsGallery({super.key});
 
   @override
   Widget build(BuildContext context) {
