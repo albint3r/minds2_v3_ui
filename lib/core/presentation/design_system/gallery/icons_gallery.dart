@@ -1,5 +1,6 @@
 // lib/core/presentation/design_system/gallery/icons_gallery.dart
 import "package:flutter/material.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/components/ds_icon.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/icon_tokens.dart";
 
 class IconsGallery extends StatelessWidget {
@@ -58,7 +59,8 @@ class IconsGallery extends StatelessWidget {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(entry.value, size: 28, color: cs.onSurface), // 🔹 un poco más pequeño
+              // Icon(entry.value, size: 28, color: cs.onSurface),
+              DSIcon(entry.value, size: DSIconSizeName.md, tone: DSIconTone.normal),
               const SizedBox(height: 2), // 🔹 menos espacio
               Text(
                 entry.key,
