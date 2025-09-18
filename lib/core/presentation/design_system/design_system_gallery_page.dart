@@ -5,7 +5,7 @@ import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_text.dart"
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/buttons_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/colors_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/icons_gallery.dart";
-import "package:minds2_ui_v3/core/presentation/design_system/gallery/metric_card_gallery.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/gallery/cards_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/spacing_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/textfield_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/typography_gallery.dart";

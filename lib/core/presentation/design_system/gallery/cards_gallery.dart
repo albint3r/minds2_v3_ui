@@ -32,7 +32,7 @@ class DSMetricCardGallery extends StatelessWidget {
             DSDealCard(
               title: "Alofa - Nova Pro",
               ownerUrl: "https://picsum.photos/seed/u500/200",
-              amount: 27000.0,
+              amount: 270000,
               closeDate: DateTime(2025, 12, 15),
               createDate: DateTime(2025, 12, 1),
               lastActionDate: DateTime(2025, 12, 1),

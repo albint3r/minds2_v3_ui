@@ -2,6 +2,7 @@ import "package:easy_localization/easy_localization.dart";
 import "package:flutter/material.dart";
 import "package:minds2_ui_v3/core/domain/deals_creation_entity_type.dart";
 import "package:minds2_ui_v3/core/domain/deals_priority.dart";
+import "package:minds2_ui_v3/core/domain/num_format_extensions.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_card.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_gap.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_icon.dart";
@@ -104,7 +105,7 @@ class _LeftData extends StatelessWidget {
           Row(
             children: [
               DSText.filters(
-                "ds.amount".tr(args: [amount.toString()]),
+                "ds.amount".tr(args: [amount.toCommaString()]),
                 color: green,
               ),
             ],
