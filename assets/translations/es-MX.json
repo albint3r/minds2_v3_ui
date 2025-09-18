@@ -1,0 +1,39 @@
+{
+  "tokens": {},
+  "ds": {
+    "page": {
+      "designSystemGalleryPage": {
+        "title": "Minds2 | Galería del Design System",
+        "colorsGallery": {
+          "title": "Galería de Colores",
+          "subtitle": "Ramps · Marca · Tinta · Secundarios · Alertas"
+        },
+        "typographyGallery": {
+          "title": "Galería de Tipografía",
+          "subtitle": "Nunito · Encabezados · Títulos · Cuerpo · Etiquetas"
+        },
+        "iconsGallery": {
+          "title": "Galería de Íconos",
+          "subtitle": "Íconos maestros del DS"
+        },
+        "spacyGallery": {
+          "title": "Galería de Espaciado",
+          "subtitle": "XS · SM · MD · LG · XL · XXL"
+        },
+        "buttonsGallery": {
+          "title": "Galería de Botones",
+          "subtitle": "primario · contorno · oscuro"
+        },
+        "inputFieldGallery": {
+          "title": "Galería de Campos de Entrada",
+          "subtitle": "Formularios · Campos"
+        },
+        "cardsGallery": {
+          "title": "Galería de Tarjetas",
+          "subtitle": "Oportunidades · KPI"
+        }
+      }
+    }
+  },
+  "pages": {}
+}

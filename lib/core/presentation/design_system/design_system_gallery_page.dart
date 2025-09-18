@@ -1,3 +1,4 @@
+import "package:easy_localization/easy_localization.dart" as appName;
 import "package:flutter/material.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_icon.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_text.dart";
@@ -23,7 +24,7 @@ class DesignSystemGalleryPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: DSText.heading1("Minds 2 | Design System · Gallery"),
+        title: DSText.heading1("ds.page.designSystemGalleryPage.title".tr()),
         backgroundColor: cs.surface,
         foregroundColor: cs.onSurface,
         elevation: 0,
@@ -31,9 +32,11 @@ class DesignSystemGalleryPage extends StatelessWidget {
       body: ListView(
         children: [
           ListTile(
-            title: DSText.labels("Colors Gallery"),
+            title: DSText.labels(
+              "ds.page.designSystemGalleryPage.colorsGallery.title".tr(),
+            ),
             subtitle: DSText.paragraph(
-              "Ramps · Brand · Ink · Secondary · Alerts",
+              "ds.page.designSystemGalleryPage.colorsGallery.subtitle".tr(),
             ),
             trailing: const DSIcon.md(DSIcons.next),
             onTap: () => Navigator.push(
@@ -43,9 +46,11 @@ class DesignSystemGalleryPage extends StatelessWidget {
           ),
           const Divider(height: 1),
           ListTile(
-            title: DSText.labels("Typography Gallery"),
+            title: DSText.labels(
+              "ds.page.designSystemGalleryPage.typographyGallery.title".tr(),
+            ),
             subtitle: DSText.paragraph(
-              "Nunito · Headings · Titles · Body · Labels",
+              "ds.page.designSystemGalleryPage.typographyGallery.subtitle".tr(),
             ),
             trailing: const DSIcon.md(DSIcons.next),
             onTap: () => Navigator.push(
@@ -55,8 +60,12 @@ class DesignSystemGalleryPage extends StatelessWidget {
           ),
           const Divider(height: 1),
           ListTile(
-            title: DSText.labels("Icons Gallery"),
-            subtitle: DSText.paragraph("Íconos maestros del DS"),
+            title: DSText.labels(
+              "ds.page.designSystemGalleryPage.iconsGallery.title".tr(),
+            ),
+            subtitle: DSText.paragraph(
+              "ds.page.designSystemGalleryPage.iconsGallery.subtitle".tr(),
+            ),
             trailing: const DSIcon.md(DSIcons.next),
             onTap: () => Navigator.push(
               context,
@@ -65,8 +74,12 @@ class DesignSystemGalleryPage extends StatelessWidget {
           ),
           const Divider(height: 1),
           ListTile(
-            title: DSText.labels("Spacing Gallery"),
-            subtitle: DSText.paragraph("XS · SM · MD · LG · XL · XXL"),
+            title: DSText.labels(
+              "ds.page.designSystemGalleryPage.spacyGallery.title".tr(),
+            ),
+            subtitle: DSText.paragraph(
+              "ds.page.designSystemGalleryPage.spacyGallery.subtitle".tr(),
+            ),
             trailing: const DSIcon.md(DSIcons.next),
             onTap: () => Navigator.push(
               context,
@@ -75,8 +88,12 @@ class DesignSystemGalleryPage extends StatelessWidget {
           ),
           const Divider(height: 1),
           ListTile(
-            title: DSText.labels("Buttons Gallery"),
-            subtitle: DSText.paragraph("primary · outline · dark"),
+            title: DSText.labels(
+              "ds.page.designSystemGalleryPage.buttonsGallery.title".tr(),
+            ),
+            subtitle: DSText.paragraph(
+              "ds.page.designSystemGalleryPage.buttonsGallery.subtitle".tr(),
+            ),
             trailing: const DSIcon.md(DSIcons.next),
             onTap: () => Navigator.push(
               context,
@@ -85,8 +102,12 @@ class DesignSystemGalleryPage extends StatelessWidget {
           ),
           const Divider(height: 1),
           ListTile(
-            title: DSText.labels("Input Field"),
-            subtitle: DSText.paragraph("Forms · Fields"),
+            title: DSText.labels(
+              "ds.page.designSystemGalleryPage.inputFieldGallery.title".tr(),
+            ),
+            subtitle: DSText.paragraph(
+              "ds.page.designSystemGalleryPage.inputFieldGallery.subtitle".tr(),
+            ),
             trailing: const DSIcon.md(DSIcons.next),
             onTap: () => Navigator.push(
               context,
@@ -95,14 +116,18 @@ class DesignSystemGalleryPage extends StatelessWidget {
           ),
           const Divider(height: 1),
           ListTile(
-            title: DSText.labels("KPI Card"),
-            subtitle: DSText.paragraph("Forms · Fields"),
+            title: DSText.labels(
+              "ds.page.designSystemGalleryPage.cardsGallery.title".tr(),
+            ),
+            subtitle: DSText.paragraph(
+              "ds.page.designSystemGalleryPage.cardsGallery.subtitle".tr(),
+            ),
             trailing: const DSIcon.md(DSIcons.next),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const DSMetricCardGallery()),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -112,6 +137,7 @@ class DesignSystemGalleryPage extends StatelessWidget {
 /// Contenedor con título y cuerpo, usa tokens para bordes y superficies.
 class _Section extends StatelessWidget {
   const _Section({required this.title, required this.child});
+
   final String title;
   final Widget child;
 
@@ -143,10 +169,7 @@ class _Section extends StatelessWidget {
           ),
           const Divider(height: 1, color: Color(0x1F000000)),
           // Body
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: child,
-          ),
+          Padding(padding: const EdgeInsets.all(12), child: child),
         ],
       ),
     );
@@ -156,6 +179,7 @@ class _Section extends StatelessWidget {
 /// Fila de “swatches” a partir de un Map<int, Color> (25..900).
 class _SwatchRow extends StatelessWidget {
   const _SwatchRow({required this.map});
+
   final Map<int, Color> map;
 
   @override
@@ -178,6 +202,7 @@ class _SwatchRow extends StatelessWidget {
 /// Usa DSColors.primary.ink[25]/[900] como texto según contraste.
 class _SwatchBox extends StatelessWidget {
   const _SwatchBox({required this.tone, required this.color});
+
   final int tone;
   final Color color;
 
@@ -206,11 +231,7 @@ class _SwatchBox extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("$tone"),
-            const Spacer(),
-            Text(_hex(color)),
-          ],
+          children: [Text("$tone"), const Spacer(), Text(_hex(color))],
         ),
       ),
     );
@@ -228,6 +249,7 @@ class _SwatchBox extends StatelessWidget {
 /// Vista previa horizontal del gradiente secundario.
 class _GradientPreview extends StatelessWidget {
   const _GradientPreview({required this.colors});
+
   final List<Color> colors;
 
   @override
