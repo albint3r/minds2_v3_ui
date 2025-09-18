@@ -1,10 +1,24 @@
 {
-  "tokens": {},
+  "tokens": {
+    "monthly": "Monthly",
+    "appointments": "Appointments"
+  },
   "ds": {
     "amount": "Amount: $ {}",
     "closeDate": "Close Date: {}",
     "createDate": "Create Date: {}",
     "lastActionDate": "Last Action: {}",
+    "avgDaily": "Avg. Daily",
+    "appointments": "Appt.",
+    "earnings": {
+      "moreThanPrevious": "You earned {amount} more than the previous period",
+      "lessThanPrevious": "You earned {amount} less than the previous period"
+    },
+    "change": {
+      "increase": "Up {amount} vs previous period",
+      "decrease": "Down {amount} vs previous period",
+      "noChange": "No change vs previous period"
+    },
     "page": {
       "designSystemGalleryPage": {
         "title": "Minds2 | Design System Gallery",

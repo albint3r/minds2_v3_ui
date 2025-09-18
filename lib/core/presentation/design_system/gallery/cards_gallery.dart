@@ -1,3 +1,4 @@
+import "package:easy_localization/easy_localization.dart";
 import "package:flutter/material.dart";
 import "package:minds2_ui_v3/core/domain/deals_creation_entity_type.dart";
 import "package:minds2_ui_v3/core/domain/deals_priority.dart";
@@ -17,16 +18,18 @@ class DSMetricCardGallery extends StatelessWidget {
         padding: const EdgeInsets.all(DSSpacing.lg),
         child: Column(
           children: [
-            const DSMetricCard(
-              periodLabel: "Monthly",
-              metricLabel: "Appt.",
+            DSMetricCard(
+              periodLabel: "tokens.monthly".tr(),
+              metricLabel: "ds.appointments".tr(),
               metricTooltip: "Appointments booked this month",
               deltaText: "+2.4%",
               deltaIsPositive: true,
               metricValue: "+45",
               valueTooltip: "Total appointments vs previous month",
-              metricSubtitle: "Avg. Daily",
-              caption: "You ear extra compared to last month.",
+              metricSubtitle: "ds.avgDaily".tr(),
+              caption: "ds.earnings.moreThanPrevious".tr(
+                namedArgs: {"amount": "+45"},
+              ),
             ),
             const DSGap.md(),
             DSDealCard(
