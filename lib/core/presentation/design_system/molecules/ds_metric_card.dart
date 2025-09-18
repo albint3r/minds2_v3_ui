@@ -96,7 +96,7 @@ class DSMetricCard extends StatelessWidget {
 
           if (caption != null) ...[
             const DSGap.md(),
-            DSText.paragraph(caption!),
+            Center(child: DSText.paragraph(caption!)),
           ],
         ],
       ),

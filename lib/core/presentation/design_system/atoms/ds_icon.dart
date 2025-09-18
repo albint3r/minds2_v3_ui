@@ -4,7 +4,7 @@ import "package:minds2_ui_v3/core/presentation/design_system/tokens/icon_tokens.
 
 enum DSIconTone { normal, muted, disabled, selected, warning, error }
 
-enum DSIconSizeName { xs, sm, md, lg, xl }
+enum DSIconSizeName { xs, sm, md, lg, xl, xxl }
 
 class DSIcon extends StatelessWidget {
   const DSIcon(
@@ -160,6 +160,19 @@ class DSIcon extends StatelessWidget {
          semanticLabel: semanticLabel,
        );
 
+  const DSIcon.xxl(
+      IconData icon, {
+        Key? key,
+        DSIconTone tone = DSIconTone.normal,
+        String? semanticLabel,
+      }) : this(
+    icon,
+    key: key,
+    size: DSIconSizeName.xxl,
+    tone: tone,
+    semanticLabel: semanticLabel,
+  );
+
   // ---------- Campos ----------
   final IconData icon;
   final DSIconSizeName size;
@@ -172,6 +185,7 @@ class DSIcon extends StatelessWidget {
     DSIconSizeName.md => DSIconSize.md,
     DSIconSizeName.lg => DSIconSize.lg,
     DSIconSizeName.xl => DSIconSize.xl,
+    DSIconSizeName.xxl => DSIconSize.xxl,
   };
 
   Color _color(DSIconTone t, ColorScheme cs) => switch (t) {

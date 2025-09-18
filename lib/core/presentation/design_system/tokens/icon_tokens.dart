@@ -53,6 +53,7 @@ class DSIconSize {
   static const double md = 20;
   static const double lg = 24;
   static const double xl = 32;
+  static const double xxl = 49;
 }
 
 /// Colores por estado (solo tokens del DS)
@@ -67,12 +68,12 @@ class DSIconColors {
 
   static Color selected(ColorScheme cs) => cs.primary;
 
-  static Color warning(ColorScheme cs) => DSColors.alert.warning[700]!;
+  static Color warning(ColorScheme cs) => DSColors.alert.warning[500]!;
 
   static Color error(ColorScheme cs) => cs.error;
 
   static Color containerSoft(ColorScheme cs) => cs.surfaceContainerHighest;
 
   static Color containerStrong(ColorScheme cs) =>
-      DSColors.secondary.table[300]!;
+      DSColors.secondary.table[500]!;
 }

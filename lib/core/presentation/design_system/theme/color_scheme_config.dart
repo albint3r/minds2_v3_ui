@@ -13,19 +13,19 @@ class ColorSchemeConfig {
     onPrimary: DSColors.primary.ink[25]!,
 
     // Acento secundario (azules / tablas)
-    secondary: DSColors.secondary.table[600]!,
+    secondary: DSColors.secondary.table[500]!,
     onSecondary: DSColors.primary.ink[25]!,
 
     // Estados
     error: DSColors.alert.error[500]!,
     onError: DSColors.primary.ink[25]!,
-    tertiary: DSColors.alert.warning[700]!,
+    tertiary: DSColors.alert.warning[500]!,
     onTertiary: DSColors.primary.ink[25]!,
 
     // Superficies / texto
     surface: DSColors.primary.ink[25]!,
     // base clara
-    onSurface: DSColors.primary.ink[900]!,
+    onSurface: DSColors.primary.ink[500]!,
     // texto principal
     surfaceContainerHighest: DSColors.primary.ink[50]!,
     // fills suaves
