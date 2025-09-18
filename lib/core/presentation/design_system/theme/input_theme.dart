@@ -12,12 +12,11 @@ InputDecorationTheme buildDSInputDecorationTheme({
     borderSide: BorderSide(color: c, width: 1.5),
   );
 
-  // 🟢 Fill blanco (como Figma) y gris solo cuando está deshabilitado
   final MaterialStateColor fill = MaterialStateColor.resolveWith((states) {
     if (states.contains(MaterialState.disabled)) {
-      return colorScheme.surfaceContainerHighest; // gris muy suave deshabilitado
+      return colorScheme.surfaceContainerHighest;
     }
-    return colorScheme.surface; // blanco (o casi blanco) del scheme
+    return colorScheme.surface; // blanco
   });
 
   return InputDecorationTheme(
@@ -27,14 +26,22 @@ InputDecorationTheme buildDSInputDecorationTheme({
       vertical: DSSpacing.sm,   // 8
     ),
 
-    // Tipografía/colores (placeholders grises, texto negro/ink)
+    // Tipografía/colores
     hintStyle: textTheme.bodyMedium?.copyWith(
       color: colorScheme.onSurface.withValues(alpha: 0.48),
       fontWeight: FontWeight.w300,
     ),
-    labelStyle: textTheme.bodySmall?.copyWith(
+
+    // ✅ Label con "paragraph" (labelSmall) y SIN subrayado
+    labelStyle: textTheme.labelSmall?.copyWith(
       color: colorScheme.onSurface.withValues(alpha: 0.72),
+      decoration: TextDecoration.none,
     ),
+    floatingLabelStyle: textTheme.labelSmall?.copyWith(
+      color: colorScheme.secondary, // o primary, según tu Figma
+      decoration: TextDecoration.none,
+    ),
+
     errorStyle: textTheme.bodySmall?.copyWith(
       color: colorScheme.error,
       fontWeight: FontWeight.w500,
@@ -44,10 +51,10 @@ InputDecorationTheme buildDSInputDecorationTheme({
     prefixIconColor: colorScheme.onSurface.withValues(alpha: 0.48),
     suffixIconColor: colorScheme.onSurface.withValues(alpha: 0.48),
 
-    // Bordes por estado (gris suave, focus azul, error rojo)
-    enabledBorder: _o(colorScheme.outlineVariant),          // gris suave
-    focusedBorder: _o(colorScheme.secondary),               // azul (match Figma)
-    errorBorder: _o(colorScheme.error),                     // rojo
+    // Bordes por estado
+    enabledBorder: _o(colorScheme.outlineVariant),
+    focusedBorder: _o(colorScheme.secondary),
+    errorBorder: _o(colorScheme.error),
     focusedErrorBorder: _o(colorScheme.error),
     disabledBorder: _o(colorScheme.outline.withValues(alpha: 0.40)),
 
