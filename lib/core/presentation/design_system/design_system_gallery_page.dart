@@ -1,5 +1,14 @@
 import "package:flutter/material.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/components/ds_icon.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/components/ds_text.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/gallery/buttons_gallery.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/gallery/colors_gallery.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/gallery/icons_gallery.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/gallery/spacing_gallery.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/gallery/textfield_gallery.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/gallery/typography_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/color_tokens.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/tokens/icon_tokens.dart";
 
 /// Página simple para visualizar las rampas de color de tu DS.
 /// - Usa DSColors.* en todo momento (también para textos).
@@ -13,46 +22,76 @@ class DesignSystemGalleryPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Design System · Colors"),
+        title: DSText.heading1("Minds 2 | Design System · Gallery"),
         backgroundColor: cs.surface,
         foregroundColor: cs.onSurface,
         elevation: 0,
       ),
-      backgroundColor: cs.surface,
       body: ListView(
-        padding: const EdgeInsets.all(16),
         children: [
-          _Section(
-            title: "Primary · brand (naranja)",
-            child: _SwatchRow(map: DSColors.primary.brand),
+          ListTile(
+            title: DSText.labels("Colors Gallery"),
+            subtitle: DSText.paragraph(
+              "Ramps · Brand · Ink · Secondary · Alerts",
+            ),
+            trailing: const DSIcon.md(DSIcons.next),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const ColorsGallery()),
+            ),
           ),
-          _Section(
-            title: "Primary · ink (tipografía / seleccionados)",
-            child: _SwatchRow(map: DSColors.primary.ink),
+          const Divider(height: 1),
+          ListTile(
+            title: DSText.labels("Typography Gallery"),
+            subtitle: DSText.paragraph(
+              "Nunito · Headings · Titles · Body · Labels",
+            ),
+            trailing: const DSIcon.md(DSIcons.next),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const TypographyGallery()),
+            ),
           ),
-          const SizedBox(height: 8),
-          _Section(
-            title: "Secondary · gradient",
-            child: _GradientPreview(colors: DSColors.secondary.gradient),
+          const Divider(height: 1),
+          ListTile(
+            title: DSText.labels("Icons Gallery"),
+            subtitle: DSText.paragraph("Íconos maestros del DS"),
+            trailing: const DSIcon.md(DSIcons.next),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const IconsGallery()),
+            ),
           ),
-          _Section(
-            title: "Secondary · table (azules)",
-            child: _SwatchRow(map: DSColors.secondary.table),
+          const Divider(height: 1),
+          ListTile(
+            title: DSText.labels("Spacing Gallery"),
+            subtitle: DSText.paragraph("XS · SM · MD · LG · XL · XXL"),
+            trailing: const DSIcon.md(DSIcons.next),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const SpacingGallery()),
+            ),
           ),
-          const SizedBox(height: 8),
-          _Section(
-            title: "Alert · error (rojos)",
-            child: _SwatchRow(map: DSColors.alert.error),
+          const Divider(height: 1),
+          ListTile(
+            title: DSText.labels("Buttons Gallery"),
+            subtitle: DSText.paragraph("primary · outline · dark"),
+            trailing: const DSIcon.md(DSIcons.next),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const DSButtonGallery()),
+            ),
           ),
-          _Section(
-            title: "Alert · success (verdes)",
-            child: _SwatchRow(map: DSColors.alert.success),
+          const Divider(height: 1),
+          ListTile(
+            title: DSText.labels("Input Field"),
+            subtitle: DSText.paragraph("Forms · Fields"),
+            trailing: const DSIcon.md(DSIcons.next),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const DSTextFieldGallery()),
+            ),
           ),
-          _Section(
-            title: "Alert · warning (amarillos)",
-            child: _SwatchRow(map: DSColors.alert.warning),
-          ),
-          const SizedBox(height: 24),
         ],
       ),
     );
