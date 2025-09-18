@@ -1,7 +1,7 @@
 // lib/core/presentation/design_system/gallery/colors_gallery.dart
 import "package:flutter/material.dart";
-import "package:minds2_ui_v3/core/presentation/design_system/components/ds_gap.dart";
-import "package:minds2_ui_v3/core/presentation/design_system/components/ds_text.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_gap.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_text.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/color_tokens.dart";
 
 /// Página para visualizar las rampas de color usando tipografía del DS.

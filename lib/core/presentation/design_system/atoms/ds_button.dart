@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:minds2_ui_v3/core/presentation/design_system/components/ds_text.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_text.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/button_tokens.dart";
 
 enum DSButtonVariant { primary, outline, dark }

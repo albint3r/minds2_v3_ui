@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:minds2_ui_v3/core/presentation/design_system/components/ds_button.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_button.dart";
 
 class DSButtonGallery extends StatelessWidget {
   const DSButtonGallery({super.key});

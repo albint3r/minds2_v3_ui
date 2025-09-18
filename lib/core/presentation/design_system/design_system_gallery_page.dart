@@ -1,9 +1,10 @@
 import "package:flutter/material.dart";
-import "package:minds2_ui_v3/core/presentation/design_system/components/ds_icon.dart";
-import "package:minds2_ui_v3/core/presentation/design_system/components/ds_text.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_icon.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_text.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/buttons_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/colors_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/icons_gallery.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/gallery/metric_card_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/spacing_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/textfield_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/typography_gallery.dart";
@@ -92,6 +93,16 @@ class DesignSystemGalleryPage extends StatelessWidget {
               MaterialPageRoute(builder: (_) => const DSTextFieldGallery()),
             ),
           ),
+          const Divider(height: 1),
+          ListTile(
+            title: DSText.labels("KPI Card"),
+            subtitle: DSText.paragraph("Forms · Fields"),
+            trailing: const DSIcon.md(DSIcons.next),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const DSMetricCardGallery()),
+            ),
+          )
         ],
       ),
     );
