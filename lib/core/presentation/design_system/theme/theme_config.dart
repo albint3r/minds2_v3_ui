@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/theme/color_scheme_config.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/theme/input_theme.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/icon_tokens.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/typography_tokens.dart";
 
@@ -13,10 +14,6 @@ class ThemeConfig {
       displayColor: colorScheme.onSurface,
     );
 
-    // Subrayado tipo DS para inputs
-    UnderlineInputBorder _u(Color c) =>
-        UnderlineInputBorder(borderSide: BorderSide(color: c, width: 1.2));
-
     return ThemeData(
       useMaterial3: true,
       colorScheme: colorScheme,
@@ -27,32 +24,17 @@ class ThemeConfig {
       // Tipografía de tokens
       textTheme: tt,
 
-      // TextSelection (usa scheme, sin withOpacity)
+      // TextSelection
       textSelectionTheme: TextSelectionThemeData(
         cursorColor: colorScheme.primary,
         selectionColor: colorScheme.secondary.withValues(alpha: 0.40),
         selectionHandleColor: colorScheme.secondary.withValues(alpha: 0.40),
       ),
 
-      // Subrayado SOLO en inputs (no en títulos)
-      inputDecorationTheme: InputDecorationTheme(
-        isDense: true,
-        contentPadding: const EdgeInsets.symmetric(vertical: 8),
-        hintStyle: tt.bodyLarge?.copyWith(
-          color: colorScheme.onSurface.withValues(alpha: 0.48),
-        ),
-        labelStyle: tt.bodyLarge?.copyWith(
-          color: colorScheme.onSurface.withValues(alpha: 0.72),
-        ),
-        floatingLabelStyle: tt.bodyLarge?.copyWith(
-          color: colorScheme.primary,
-          fontWeight: FontWeight.w500,
-        ),
-        enabledBorder: _u(colorScheme.outlineVariant),
-        disabledBorder: _u(colorScheme.outline.withValues(alpha: 0.40)),
-        focusedBorder: _u(colorScheme.primary),
-        errorBorder: _u(colorScheme.error),
-        focusedErrorBorder: _u(colorScheme.error),
+      // ✅ TextFields (rounded outline via tokens)
+      inputDecorationTheme: buildDSInputDecorationTheme(
+        colorScheme: colorScheme,
+        textTheme: tt,
       ),
 
       // Botones de texto
@@ -62,7 +44,8 @@ class ThemeConfig {
           textStyle: tt.labelLarge,
         ),
       ),
-      // añade a tu ThemeConfig (no cambies lo demás)
+
+      // Iconografía
       iconTheme: IconThemeData(
         color: colorScheme.onSurface,
         size: DSIconSize.md,
@@ -74,10 +57,9 @@ class ThemeConfig {
           backgroundColor: Colors.transparent,
           splashFactory: InkRipple.splashFactory,
           padding: const EdgeInsets.all(8),
-          minimumSize: const Size(40, 40), // target táctil
+          minimumSize: const Size(40, 40),
         ),
       ),
-
     );
   }
 }

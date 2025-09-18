@@ -17,36 +17,39 @@ enum DSTextVariant {
 
 TextStyle _resolveStyle(BuildContext ctx, DSTextVariant v) {
   final t = Theme.of(ctx).textTheme;
+
+  // helper de fallback
+  TextStyle _s(TextStyle? s) => s ?? t.bodyMedium ?? const TextStyle();
+
   switch (v) {
     case DSTextVariant.heading1:
-      return t.displayLarge!;
+      return _s(t.displayLarge);
     case DSTextVariant.heading2:
-      return t.displayMedium!;
+      return _s(t.displayMedium);
     case DSTextVariant.heading3:
-      return t.displaySmall!;
+      return _s(t.displaySmall);
     case DSTextVariant.heading4:
-      return t.headlineMedium!;
+      return _s(t.headlineMedium);
     case DSTextVariant.overline:
-      return t.titleLarge!;
+      return _s(t.titleLarge);
     case DSTextVariant.navBar:
-      return t.titleMedium!;
+      return _s(t.titleMedium);
     case DSTextVariant.filters:
-      return t.titleSmall!;
+      return _s(t.titleSmall);
     case DSTextVariant.input:
-      return t.bodyLarge!;
+      return _s(t.bodyLarge);
     case DSTextVariant.labels:
-      return t.bodyMedium!;
+      return _s(t.bodyMedium);
     case DSTextVariant.tables:
-      return t.bodySmall!;
+      return _s(t.bodySmall);
     case DSTextVariant.button:
-      return t.labelLarge!;
+      return _s(t.labelLarge);
     case DSTextVariant.paragraph:
-      return t.labelSmall!;
+      return _s(t.labelSmall);
   }
 }
 
 class DSText extends StatelessWidget {
-
   const DSText(
     this.data, {
     super.key,
@@ -57,10 +60,11 @@ class DSText extends StatelessWidget {
     this.overflow,
     this.decoration,
   });
+
+  // --- Factories cómodas ---
   factory DSText.tables(String data, {Key? key, Color? color}) =>
       DSText(data, key: key, variant: DSTextVariant.tables, color: color);
 
-  // --- Factories ---
   factory DSText.heading1(String data, {Key? key, Color? color}) =>
       DSText(data, key: key, variant: DSTextVariant.heading1, color: color);
 
@@ -110,13 +114,14 @@ class DSText extends StatelessWidget {
     return Text(
       data,
       textAlign: textAlign,
-      maxLines: maxLines,
-      overflow: overflow,
+      maxLines: maxLines ?? (variant == DSTextVariant.button ? 1 : null),
+      overflow:
+          overflow ??
+          (variant == DSTextVariant.button ? TextOverflow.ellipsis : null),
       style: base.copyWith(
-        color: color ?? cs.onSurface,
+        color: color ?? cs.onSurface, // botones pasan su color explícito
         decoration: decoration,
       ),
     );
   }
 }
-
