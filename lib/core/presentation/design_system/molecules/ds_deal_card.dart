@@ -1,3 +1,4 @@
+import "package:easy_localization/easy_localization.dart";
 import "package:flutter/material.dart";
 import "package:minds2_ui_v3/core/domain/deals_creation_entity_type.dart";
 import "package:minds2_ui_v3/core/domain/deals_priority.dart";
@@ -41,10 +42,10 @@ class DSDealCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final green = DSColors.alert.success[500]!;
 
-    final closeDateStr =
-        "Close Date: ${closeDate.day}/ ${closeDate.month}/ ${closeDate.year}";
-    final createDateStr =
-        "Create Date: ${createDate.day}/ ${createDate.month}/ ${createDate.year}";
+    // final closeDateStr =
+    //     "Close Date: ${closeDate.day}/ ${closeDate.month}/ ${closeDate.year}";
+    // final createDateStr =
+    //     "Create Date: ${createDate.day}/ ${createDate.month}/ ${createDate.year}";
     return DSCard(
       child: Column(
         children: [
@@ -54,7 +55,7 @@ class DSDealCard extends StatelessWidget {
             children: [
               _LeftData(
                 amount: amount,
-                closeDateStr: closeDateStr,
+                closeDate: closeDate,
                 existMessage: existMessage,
               ),
               const Spacer(),
@@ -68,9 +69,9 @@ class DSDealCard extends StatelessWidget {
           const DSGap.sm(),
           const Divider(height: 1),
           const DSGap.sm(),
-          const _BindContactAndLastActivity(),
+          _BindContactAndLastActivity(lastActionDate: lastActionDate),
           const DSGap.sm(),
-          _PriorityBar(createDateStr: createDateStr, green: green),
+          _PriorityBar(createDate: createDate, green: green),
         ],
       ),
     );
@@ -80,12 +81,12 @@ class DSDealCard extends StatelessWidget {
 class _LeftData extends StatelessWidget {
   const _LeftData({
     required this.amount,
-    required this.closeDateStr,
+    required this.closeDate,
     required this.existMessage,
   });
 
   final double amount;
-  final String closeDateStr;
+  final DateTime closeDate;
   final bool existMessage;
 
   @override
@@ -102,11 +103,17 @@ class _LeftData extends StatelessWidget {
           ),
           Row(
             children: [
-              DSText.filters("Amount: \$ ", color: green),
-              DSText.filters(amount.toString(), color: green),
+              DSText.filters(
+                "ds.amount".tr(args: [amount.toString()]),
+                color: green,
+              ),
             ],
           ),
-          DSText.labels(closeDateStr),
+          DSText.labels(
+            "ds.closeDate".tr(
+              args: ["${closeDate.day}-${closeDate.month}-${closeDate.year}"],
+            ),
+          ),
         ],
       ),
     );
@@ -163,16 +170,20 @@ class _RightData extends StatelessWidget {
 }
 
 class _PriorityBar extends StatelessWidget {
-  const _PriorityBar({required this.createDateStr, required this.green});
+  const _PriorityBar({required this.createDate, required this.green});
 
-  final String createDateStr;
+  final DateTime createDate;
   final Color green;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        DSText.paragraph(createDateStr),
+        DSText.paragraph(
+          "ds.createDate".tr(
+            args: ["${createDate.day}-${createDate.month}-${createDate.year}"],
+          ),
+        ),
         const DSGap.sm(),
         Expanded(
           child: Container(
@@ -191,7 +202,9 @@ class _PriorityBar extends StatelessWidget {
 }
 
 class _BindContactAndLastActivity extends StatelessWidget {
-  const _BindContactAndLastActivity();
+  const _BindContactAndLastActivity({required this.lastActionDate});
+
+  final DateTime lastActionDate;
 
   @override
   Widget build(BuildContext context) {
@@ -199,7 +212,15 @@ class _BindContactAndLastActivity extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
-          children: [DSText.paragraph("Last Action: 3 days ago")],
+          children: [
+            DSText.paragraph(
+              "ds.lastActionDate".tr(
+                args: [
+                  "${lastActionDate.day}-${lastActionDate.month}-${lastActionDate.year}",
+                ],
+              ),
+            ),
+          ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,

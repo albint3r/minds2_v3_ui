@@ -1,6 +1,10 @@
 {
   "tokens": {},
   "ds": {
+    "amount": "Amount: $ {}",
+    "closeDate": "Close Date: {}",
+    "createDate": "Create Date: {}",
+    "lastActionDate": "Last Action: {}",
     "page": {
       "designSystemGalleryPage": {
         "title": "Minds2 | Design System Gallery",

@@ -1,36 +1,40 @@
 {
   "tokens": {},
   "ds": {
+    "amount": "Amount: $ {}",
+    "closeDate": "Close Date: {}",
+    "createDate": "Create Date: {}",
+    "lastActionDate": "Last Action: {}",
     "page": {
       "designSystemGalleryPage": {
-        "title": "Minds2 | Galería del Design System",
+        "title": "Minds2 | Design System Gallery",
         "colorsGallery": {
-          "title": "Galería de Colores",
-          "subtitle": "Ramps · Marca · Tinta · Secundarios · Alertas"
+          "title": "Colors Gallery",
+          "subtitle": "Ramps · Brand · Ink · Secondary · Alerts"
         },
         "typographyGallery": {
-          "title": "Galería de Tipografía",
-          "subtitle": "Nunito · Encabezados · Títulos · Cuerpo · Etiquetas"
+          "title": "Typography Gallery",
+          "subtitle": "Nunito · Headings · Titles · Body · Labels"
         },
         "iconsGallery": {
-          "title": "Galería de Íconos",
-          "subtitle": "Íconos maestros del DS"
+          "title": "Icons Gallery",
+          "subtitle": "Master icons of the DS"
         },
         "spacyGallery": {
-          "title": "Galería de Espaciado",
+          "title": "Spacing Gallery",
           "subtitle": "XS · SM · MD · LG · XL · XXL"
         },
         "buttonsGallery": {
-          "title": "Galería de Botones",
-          "subtitle": "primario · contorno · oscuro"
+          "title": "Buttons Gallery",
+          "subtitle": "primary · outline · dark"
         },
         "inputFieldGallery": {
-          "title": "Galería de Campos de Entrada",
-          "subtitle": "Formularios · Campos"
+          "title": "Input Field Gallery",
+          "subtitle": "Forms · Fields"
         },
         "cardsGallery": {
-          "title": "Galería de Tarjetas",
-          "subtitle": "Oportunidades · KPI"
+          "title": "Card Gallery",
+          "subtitle": "Deals · KPI"
         }
       }
     }
