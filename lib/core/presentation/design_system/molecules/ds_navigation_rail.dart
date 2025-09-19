@@ -3,7 +3,6 @@ import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_gap.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_icon.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_profile_avatar.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/color_tokens.dart";
-import "package:minds2_ui_v3/core/presentation/design_system/tokens/icon_tokens.dart";
 import "package:minds2_ui_v3/gen/assets.gen.dart";
 
 /// Rail lateral de proyectos (logo “S” + “+” + lista de proyectos).
@@ -41,7 +40,7 @@ class DSProjectRail extends StatelessWidget {
           Assets.images.logo.minds2LogoSymbol.image(height: 35),
           const DSGap.sm(),
           // BOTÓN "+"
-          const DSIcon.surface(DSIcons.add, size: DSIconSizeName.md),
+          const DSIcon.add(),
           const DSGap.xl(),
 
           // LISTA HARD-CODEADA DE PROYECTOS

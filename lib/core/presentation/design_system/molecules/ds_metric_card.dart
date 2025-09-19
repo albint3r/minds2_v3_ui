@@ -48,7 +48,7 @@ class DSMetricCard extends StatelessWidget {
             children: [
               DSText.filters(periodLabel),
               const DSGap.xs(),
-              const DSIcon.sm(Icons.arrow_drop_down, tone: DSIconTone.muted),
+              const DSIcon.arrowDropDown(),
             ],
           ),
           const DSGap.md(),

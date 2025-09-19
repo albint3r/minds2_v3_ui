@@ -10,7 +10,6 @@ import "package:minds2_ui_v3/core/presentation/design_system/gallery/sidebar_gal
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/spacing_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/textfield_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/typography_gallery.dart";
-import "package:minds2_ui_v3/core/presentation/design_system/tokens/icon_tokens.dart";
 
 /// Página simple para visualizar las rampas de color de tu DS.
 /// - Usa DSColors.* en todo momento (también para textos).
@@ -38,7 +37,7 @@ class DesignSystemGalleryPage extends StatelessWidget {
             subtitle: DSText.paragraph(
               "ds.page.designSystemGalleryPage.colorsGallery.subtitle".tr(),
             ),
-            trailing: const DSIcon.md(DSIcons.next),
+            trailing: const DSIcon.next(),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const ColorsGallery()),
@@ -52,7 +51,7 @@ class DesignSystemGalleryPage extends StatelessWidget {
             subtitle: DSText.paragraph(
               "ds.page.designSystemGalleryPage.typographyGallery.subtitle".tr(),
             ),
-            trailing: const DSIcon.md(DSIcons.next),
+            trailing: const DSIcon.next(),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const TypographyGallery()),
@@ -66,7 +65,7 @@ class DesignSystemGalleryPage extends StatelessWidget {
             subtitle: DSText.paragraph(
               "ds.page.designSystemGalleryPage.iconsGallery.subtitle".tr(),
             ),
-            trailing: const DSIcon.md(DSIcons.next),
+            trailing: const DSIcon.next(),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const IconsGallery()),
@@ -80,7 +79,7 @@ class DesignSystemGalleryPage extends StatelessWidget {
             subtitle: DSText.paragraph(
               "ds.page.designSystemGalleryPage.spacyGallery.subtitle".tr(),
             ),
-            trailing: const DSIcon.md(DSIcons.next),
+            trailing: const DSIcon.next(),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const SpacingGallery()),
@@ -94,7 +93,7 @@ class DesignSystemGalleryPage extends StatelessWidget {
             subtitle: DSText.paragraph(
               "ds.page.designSystemGalleryPage.buttonsGallery.subtitle".tr(),
             ),
-            trailing: const DSIcon.md(DSIcons.next),
+            trailing: const DSIcon.next(),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const DSButtonGallery()),
@@ -108,7 +107,7 @@ class DesignSystemGalleryPage extends StatelessWidget {
             subtitle: DSText.paragraph(
               "ds.page.designSystemGalleryPage.inputFieldGallery.subtitle".tr(),
             ),
-            trailing: const DSIcon.md(DSIcons.next),
+            trailing: const DSIcon.next(),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const DSTextFieldGallery()),
@@ -122,7 +121,7 @@ class DesignSystemGalleryPage extends StatelessWidget {
             subtitle: DSText.paragraph(
               "ds.page.designSystemGalleryPage.cardsGallery.subtitle".tr(),
             ),
-            trailing: const DSIcon.md(DSIcons.next),
+            trailing: const DSIcon.next(),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const DSMetricCardGallery()),
@@ -132,7 +131,7 @@ class DesignSystemGalleryPage extends StatelessWidget {
           ListTile(
             title: DSText.labels("SideBar Menu".tr()),
             subtitle: DSText.paragraph("Main Menu".tr()),
-            trailing: const DSIcon.md(DSIcons.next),
+            trailing: const DSIcon.next(),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const SidebarGallery()),

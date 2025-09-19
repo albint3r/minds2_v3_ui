@@ -10,7 +10,6 @@ import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_profile_av
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_text.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/molecules/ds_avatar_stack.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/color_tokens.dart";
-import "package:minds2_ui_v3/core/presentation/design_system/tokens/icon_tokens.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/radius_tokens.dart";
 
 class DSDealCard extends StatelessWidget {
@@ -98,10 +97,7 @@ class _LeftData extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          DSIcon.md(
-            DSIcons.message,
-            tone: existMessage ? DSIconTone.warning : DSIconTone.disabled,
-          ),
+          const DSIcon.message(),
           Row(
             children: [
               DSText.filters(
@@ -143,25 +139,19 @@ class _RightData extends StatelessWidget {
             children: [
               // Depende del quien creo el deal muestro los iconos
               switch (creationEntityType) {
-                DealsCreationEntityType.human => const DSIcon(
-                  DSIcons.profile,
-                  tone: DSIconTone.disabled,
+                DealsCreationEntityType.human => const DSIcon.profile(
+                  type: DSIconType.disabled,
                 ),
-                DealsCreationEntityType.ai => const DSIcon(
-                  DSIcons.aiBot,
-                  tone: DSIconTone.disabled,
+                DealsCreationEntityType.ai => const DSIcon.aiBot(
+                  type: DSIconType.disabled,
                 ),
-                DealsCreationEntityType.system => const DSIcon(
-                  DSIcons.aiBot,
-                  tone: DSIconTone.disabled,
+                DealsCreationEntityType.system => const DSIcon.aiBot(
+                  type: DSIconType.disabled,
                 ),
               },
               // SI cuenta con un workflow muestra el icono.
               if (haveWorkflows)
-                const DSIcon(
-                  DSIcons.integrationWorkflow,
-                  tone: DSIconTone.disabled,
-                ),
+                const DSIcon.integrationWorkflow(type: DSIconType.disabled),
             ],
           ),
         ],

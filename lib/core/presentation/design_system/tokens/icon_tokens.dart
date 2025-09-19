@@ -41,6 +41,7 @@ class DSIcons {
   static const IconData search = Icons.search_outlined;
   static const IconData back = Icons.arrow_back_ios_new_outlined;
   static const IconData next = Icons.arrow_forward_ios_outlined;
+  static const IconData arrowDropDown = Icons.arrow_drop_down;
   static const IconData profile = Icons.account_circle_outlined;
   static const IconData addRounded = Icons.add_circle_outline;
 }

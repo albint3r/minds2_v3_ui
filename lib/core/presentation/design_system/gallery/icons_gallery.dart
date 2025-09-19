@@ -3,7 +3,6 @@ import "package:flutter/material.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_gap.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_icon.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_text.dart";
-import "package:minds2_ui_v3/core/presentation/design_system/tokens/icon_tokens.dart";
 
 class IconsGallery extends StatelessWidget {
   const IconsGallery({super.key});
@@ -13,35 +12,35 @@ class IconsGallery extends StatelessWidget {
     final cs = Theme.of(context).colorScheme;
 
     final icons = <String, Widget>{
-      "Home": const DSIcon.md(DSIcons.home),
-      "Conversation": const DSIcon.md(DSIcons.conversation),
-      "Contact": const DSIcon.md(DSIcons.contact),
-      "Funnel": const DSIcon.md(DSIcons.funnel),
-      "Calendar": const DSIcon.md(DSIcons.calendar),
-      "Campaign": const DSIcon.md(DSIcons.campaign),
-      "AI Builder": const DSIcon.md(DSIcons.aiBuilder),
-      "Integrations": const DSIcon.md(DSIcons.integrations),
-      "Team": const DSIcon.md(DSIcons.team),
-      "Billing": const DSIcon.md(DSIcons.billing),
-      "Integrations Apply": const DSIcon.md(DSIcons.integrationsApply),
-      "Logout": const DSIcon.md(DSIcons.logout),
-      "Add": const DSIcon.md(DSIcons.add),
-      "Check": const DSIcon.md(DSIcons.check),
-      "Approved": const DSIcon.md(DSIcons.approved),
-      "Close": const DSIcon.md(DSIcons.close),
-      "CheckBox Selected": const DSIcon.md(DSIcons.checkBoxSelected),
-      "CheckBox": const DSIcon.md(DSIcons.checkBox),
-      "Circular Avatar Num": const DSIcon.md(DSIcons.circularAvatarNumber),
-      "Message": const DSIcon.md(DSIcons.message),
-      "AI Bot": const DSIcon.md(DSIcons.aiBot),
-      "Integration Workflow": const DSIcon.md(DSIcons.integrationWorkflow),
-      "Notification": const DSIcon.md(DSIcons.notification),
-      "Configuration": const DSIcon.md(DSIcons.configuration),
-      "Search": const DSIcon.md(DSIcons.search),
-      "Back": const DSIcon.md(DSIcons.back),
-      "Next": const DSIcon.md(DSIcons.next),
-      "Profile": const DSIcon.md(DSIcons.profile),
-      "Add Rounded": const DSIcon.md(DSIcons.addRounded),
+      "Home": const DSIcon.home(),
+      "Conversation": const DSIcon.conversation(),
+      "Contact": const DSIcon.contact(),
+      "Funnel": const DSIcon.funnel(),
+      "Calendar": const DSIcon.calendar(),
+      "Campaign": const DSIcon.campaign(),
+      "AI Builder": const DSIcon.aiBuilder(),
+      "Integrations": const DSIcon.integrations(),
+      "Team": const DSIcon.team(),
+      "Billing": const DSIcon.billing(),
+      "Integrations Apply": const DSIcon.integrationsApply(),
+      "Logout": const DSIcon.logout(),
+      "Add": const DSIcon.add(),
+      "Check": const DSIcon.check(),
+      "Approved": const DSIcon.approved(),
+      "Close": const DSIcon.close(),
+      "CheckBox Selected": const DSIcon.checkBoxSelected(),
+      "CheckBox": const DSIcon.checkBox(),
+      "Circular Avatar Num": const DSIcon.circularAvatarNumber(),
+      "Message": const DSIcon.message(),
+      "AI Bot": const DSIcon.aiBot(),
+      "Integration Workflow": const DSIcon.integrationWorkflow(),
+      "Notification": const DSIcon.notification(),
+      "Configuration": const DSIcon.configuration(),
+      "Search": const DSIcon.search(),
+      "Back": const DSIcon.back(),
+      "Next": const DSIcon.next(),
+      "Profile": const DSIcon.profile(),
+      "Add Rounded": const DSIcon.addRounded(),
     };
 
     return Scaffold(
