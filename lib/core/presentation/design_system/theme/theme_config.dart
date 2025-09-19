@@ -1,9 +1,11 @@
 import "package:flutter/material.dart";
+import "package:injectable/injectable.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/theme/color_scheme_config.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/theme/input_theme.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/icon_tokens.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/typography_tokens.dart";
 
+@singleton
 class ThemeConfig {
   ThemeData get light =>
       _getThemeData(colorScheme: ColorSchemeConfig.lightScheme);

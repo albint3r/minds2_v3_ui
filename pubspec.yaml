@@ -37,6 +37,19 @@ dependencies:
   google_fonts: ^6.3.1
   gap: ^3.0.1
   easy_localization: ^3.0.8
+  freezed: ^3.2.3
+  get_it: ^8.2.0
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.9.0
+  flutter_bloc: ^9.1.1
+  bloc: ^9.0.0
+  l: ^5.0.1
+  injectable: ^2.5.1
+  injectable_generator: ^2.8.1
+  url_strategy: ^0.3.0
+  dio: ^5.9.0
+  dio_intercept_to_curl: ^0.2.0
+  shared_preferences: ^2.5.3
 
 
 
@@ -47,7 +60,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  custom_lint: ^0.8.1
+  custom_lint: ^0.7.4   # 👈 baja a una versión con analyzer ^7
+  json_serializable: ^6.11.1
 
 flutter_gen:
   output: lib/gen/ # Optional (default: lib/gen/)

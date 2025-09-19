@@ -1,14 +1,13 @@
 class AppConfig {
   static bool get isDebug => true;
 
-  static String get protocol => isDebug ? "http" : "https";
+  static String get scheme => isDebug ? "http" : "https";
+
+  static int get port => isDebug ? 80 : 443;
 
   static String get apiUrl => isDebug ? "localhost" : "minds2.ai";
 
-  static int get port => isDebug ? 3000 : 443;
-
-  static String get baseUrl =>
-      isDebug ? "$protocol://$apiUrl:$port" : "$protocol://$apiUrl";
+  static String get baseUrl => "$scheme://$apiUrl";
 
   static String get apiBasePath => "/api/v1";
 
