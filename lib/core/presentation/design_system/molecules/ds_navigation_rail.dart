@@ -2,9 +2,9 @@ import "package:easy_localization/easy_localization.dart";
 import "package:flutter/material.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_gap.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_icon.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_logo_animated.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_profile_avatar.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/tokens/color_tokens.dart";
-import "package:minds2_ui_v3/gen/assets.gen.dart";
 
 /// Rail lateral de proyectos (logo “S” + “+” + lista de proyectos).
 /// - Ancho fijo 64px.
@@ -38,12 +38,9 @@ class DSProjectRail extends StatelessWidget {
       child: Column(
         children: [
           const DSGap.xxl(),
-          GestureDetector(
-            onTap: onLogoTap,
-            child: Tooltip(
-              message: "ds.navRail.toolTips.logoRail".tr(),
-              child: Assets.images.logo.minds2LogoSymbol.image(height: 35),
-            ),
+          DSLogoAnimated(
+            onToggle: onLogoTap,
+            tooltip: "ds.navRail.toolTips.logoRail".tr(),
           ),
           const DSGap.sm(),
           DSIcon.add(

@@ -38,6 +38,7 @@ class DSSidebarBoxButton extends StatelessWidget {
         ? DSColors.primary.ink[100]!
         : DSColors.primary.ink[25]!;
 
+    // Cambia solo el "type" del ícono según el estado
     final iconWithState = icon.copyWith(
       type: switch (state) {
         DSSidebarBtnState.normal => DSIconType.surface,
@@ -54,15 +55,21 @@ class DSSidebarBoxButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         decoration: BoxDecoration(color: bg),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const DSGap.xl(),
             iconWithState,
             const DSGap.sm(),
             Expanded(
-              child: DSText.labels(
-                label,
-                color: _isActive ? DSColors.primary.ink[900] : textColor,
+              child: ClipRect(
+                child: DSText.labels(
+                  label,
+                  color: _isActive ? DSColors.primary.ink[900] : textColor,
+                  oneLine: true, // fuerza una línea
+                  maxScaleFactor: 1.2, // limita escalado del sistema
+                  overflow: TextOverflow.ellipsis, // redundante pero seguro
+                ),
               ),
             ),
           ],
@@ -111,11 +118,20 @@ class DSSidebarTextButton extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const DSGap.xl(),
             iconWithState,
             const DSGap.sm(),
-            Expanded(child: DSText.labels(label, color: textColor)),
+            Expanded(
+              child: DSText.labels(
+                label,
+                color: textColor,
+                oneLine: true,
+                maxScaleFactor: 1.2,
+              ),
+            ),
           ],
         ),
       ),
