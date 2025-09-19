@@ -60,13 +60,10 @@ class DSMainSidebar extends StatelessWidget {
             label: "Calendar",
             onTap: null,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: DSSidebarBoxButton(
-              icon: DSIcons.campaign,
-              label: "Appointment",
-              onTap: null,
-            ),
+          const DSSidebarBoxButton(
+            icon: DSIcons.campaign,
+            label: "Appointment",
+            onTap: null,
           ),
           const DSSidebarBoxButton(
             icon: DSIcons.aiBuilder,
