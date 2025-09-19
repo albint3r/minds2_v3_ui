@@ -39,10 +39,8 @@ class DSProjectRail extends StatelessWidget {
           const DSGap.xxl(),
           Assets.images.logo.minds2LogoSymbol.image(height: 35),
           const DSGap.sm(),
-          // BOTÓN "+"
           const DSIcon.add(),
           const DSGap.xl(),
-
           // LISTA HARD-CODEADA DE PROYECTOS
           Expanded(
             child: ListView.separated(

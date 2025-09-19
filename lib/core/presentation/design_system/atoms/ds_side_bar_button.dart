@@ -38,6 +38,14 @@ class DSSidebarBoxButton extends StatelessWidget {
         ? DSColors.primary.ink[100]!
         : DSColors.primary.ink[25]!;
 
+    final iconWithState = icon.copyWith(
+      type: switch (state) {
+        DSSidebarBtnState.normal => DSIconType.surface,
+        DSSidebarBtnState.active => DSIconType.normal,
+        DSSidebarBtnState.disabled => DSIconType.disabled,
+      },
+    );
+
     return InkWell(
       onTap: _isDisabled ? null : onTap,
       borderRadius: BorderRadius.circular(8),
@@ -49,7 +57,7 @@ class DSSidebarBoxButton extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const DSGap.xl(),
-            icon,
+            iconWithState,
             const DSGap.sm(),
             Expanded(
               child: DSText.labels(
@@ -89,6 +97,14 @@ class DSSidebarTextButton extends StatelessWidget {
         ? DSColors.primary.ink[100]!
         : DSColors.primary.ink[25]!;
 
+    final iconWithState = icon.copyWith(
+      type: switch (state) {
+        DSSidebarBtnState.normal => DSIconType.surface,
+        DSSidebarBtnState.active => DSIconType.normal,
+        DSSidebarBtnState.disabled => DSIconType.disabled,
+      },
+    );
+
     return InkWell(
       onTap: _isDisabled ? null : onTap,
       hoverColor: DSColors.primary.ink[800],
@@ -97,7 +113,7 @@ class DSSidebarTextButton extends StatelessWidget {
         child: Row(
           children: [
             const DSGap.xl(),
-            icon,
+            iconWithState,
             const DSGap.sm(),
             Expanded(child: DSText.labels(label, color: textColor)),
           ],
