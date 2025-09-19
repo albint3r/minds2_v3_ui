@@ -38,6 +38,7 @@ class DSIcons {
 
   // Sistema
   static const IconData configuration = Icons.settings_outlined;
+  static const IconData supportAgent = Icons.support_agent;
   static const IconData search = Icons.search_outlined;
   static const IconData back = Icons.arrow_back_ios_new_outlined;
   static const IconData next = Icons.arrow_forward_ios_outlined;

@@ -328,6 +328,19 @@ class DSIcon extends StatelessWidget {
          semanticLabel: semanticLabel,
        );
 
+  const DSIcon.supportAgent({
+    Key? key,
+    DSIconType type = DSIconType.normal,
+    DSIconSizeName size = DSIconSizeName.md,
+    String? semanticLabel,
+  }) : this._(
+         DSIcons.supportAgent,
+         key: key,
+         type: type,
+         size: size,
+         semanticLabel: semanticLabel,
+       );
+
   const DSIcon.search({
     Key? key,
     DSIconType type = DSIconType.normal,
