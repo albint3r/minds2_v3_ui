@@ -12,7 +12,8 @@
     "appointments": "Appt.",
     "navRail": {
       "toolTips": {
-        "add": "Create new project or request access to a existing one."
+        "add": "Create new project or request access to a existing one.",
+        "logoRail": "Open or close the right menu"
       }
     },
     "earnings": {

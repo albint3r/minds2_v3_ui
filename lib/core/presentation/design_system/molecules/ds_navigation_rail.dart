@@ -40,7 +40,10 @@ class DSProjectRail extends StatelessWidget {
           const DSGap.xxl(),
           GestureDetector(
             onTap: onLogoTap,
-            child: Assets.images.logo.minds2LogoSymbol.image(height: 35),
+            child: Tooltip(
+              message: "ds.navRail.toolTips.logoRail".tr(),
+              child: Assets.images.logo.minds2LogoSymbol.image(height: 35),
+            ),
           ),
           const DSGap.sm(),
           DSIcon.add(
