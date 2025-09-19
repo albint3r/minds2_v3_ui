@@ -1,0 +1,43 @@
+{
+  "tokens": {},
+  "ds": {
+    "amount": "Amount: $ {}",
+    "closeDate": "Close Date: {}",
+    "createDate": "Create Date: {}",
+    "lastActionDate": "Last Action: {}",
+    "page": {
+      "designSystemGalleryPage": {
+        "title": "Minds2 | Design System Gallery",
+        "colorsGallery": {
+          "title": "Colors Gallery",
+          "subtitle": "Ramps · Brand · Ink · Secondary · Alerts"
+        },
+        "typographyGallery": {
+          "title": "Typography Gallery",
+          "subtitle": "Nunito · Headings · Titles · Body · Labels"
+        },
+        "iconsGallery": {
+          "title": "Icons Gallery",
+          "subtitle": "Master icons of the DS"
+        },
+        "spacyGallery": {
+          "title": "Spacing Gallery",
+          "subtitle": "XS · SM · MD · LG · XL · XXL"
+        },
+        "buttonsGallery": {
+          "title": "Buttons Gallery",
+          "subtitle": "primary · outline · dark"
+        },
+        "inputFieldGallery": {
+          "title": "Input Field Gallery",
+          "subtitle": "Forms · Fields"
+        },
+        "cardsGallery": {
+          "title": "Card Gallery",
+          "subtitle": "Deals · KPI"
+        }
+      }
+    }
+  },
+  "pages": {}
+}

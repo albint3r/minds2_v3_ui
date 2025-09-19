@@ -30,23 +30,36 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: # 👈 paquete del SDK, no de pub.dev
+    sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  google_fonts: ^6.3.1
+  gap: ^3.0.1
+  easy_localization: ^3.0.8
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
 dev_dependencies:
+  build_runner: ^2.4.10
+  flutter_gen_runner: ^5.11.0
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
-  custom_lint: ^0.6.4
+  custom_lint: ^0.8.1
 
+flutter_gen:
+  output: lib/gen/ # Optional (default: lib/gen/)
+  # line_length: 80 # Optional
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+  # Optional
+  integrations:
+    image: true
+    flutter_svg: true
+    rive: true
+    lottie: true
 
-# The following section is specific to Flutter packages.
 flutter:
 
   # The following line ensures that the Material Icons font is
@@ -55,9 +68,16 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/
+    - assets/images/logo/minds2_black_logo.png
+    - assets/images/logo/minds2_inverted_color.png
+    - assets/images/logo/minds2_logo_symbol.png
+    - assets/images/logo/minds2_main_logo.png
+    - assets/images/logo/minds2_white_logo.png
+    - assets/images/logo/minds2_without_slogan.png
+    - assets/translations/
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
