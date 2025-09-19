@@ -11,10 +11,11 @@ import "package:minds2_ui_v3/gen/assets.gen.dart";
 /// - Colores y tipografía del DS.
 /// - La lista de proyectos está HARDCODEADA dentro del widget.
 class DSProjectRail extends StatelessWidget {
-  const DSProjectRail({super.key});
+  const DSProjectRail({super.key, this.onLogoTap});
 
   static const double _railWidth = 64;
   static const double _itemSize = 40;
+  final VoidCallback? onLogoTap;
 
   // ⚠️ Lista hardcodeada (mock) de proyectos
   List<String> get _projects => const [
@@ -37,7 +38,10 @@ class DSProjectRail extends StatelessWidget {
       child: Column(
         children: [
           const DSGap.xxl(),
-          Assets.images.logo.minds2LogoSymbol.image(height: 35),
+          GestureDetector(
+            onTap: onLogoTap,
+            child: Assets.images.logo.minds2LogoSymbol.image(height: 35),
+          ),
           const DSGap.sm(),
           DSIcon.add(
             message: "ds.navRail.toolTips.add".tr(),
