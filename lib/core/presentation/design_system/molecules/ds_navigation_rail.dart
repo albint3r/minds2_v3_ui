@@ -62,10 +62,10 @@ class DSProjectRail extends StatelessWidget {
                     width: _itemSize,
                     height: _itemSize,
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle, // 👈 círculo en lugar de cuadrado
+                      shape: BoxShape.circle,
                       border: isSelected
                           ? Border.all(
-                        color: DSColors.alert.success[500]!, // 👈 borde naranja correcto
+                        color: DSColors.alert.success[500]!,
                         width: 2.5,
                       )
                           : null,

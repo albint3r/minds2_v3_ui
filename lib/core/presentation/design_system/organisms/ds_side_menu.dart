@@ -13,64 +13,46 @@ class DSSideMenu extends StatefulWidget {
 class _DSSideMenuState extends State<DSSideMenu> {
   static const double _sidebarWidth = 240;
   bool _isCollapsed = false;
-  DSSection _current = DSSection.home; // <- fuente de verdad actual
+
+  // selección de sección actual (tu “fuente de verdad” local)
+  DSSection _current = DSSection.home;
 
   void _toggleMenu() => setState(() => _isCollapsed = !_isCollapsed);
 
   void _onSectionTap(DSSection s) {
-    setState(() => _current = s); // 1) marca seleccionado
-    // 2) dispara tu navegación/bloc/evento
-    // context.read<NavBloc>().add(NavigateTo(s));
-    // o go_router / auto_route / setState de tu layout... lo que uses
+    setState(() => _current = s); // marca activo
+    // aquí disparas navegación/BLoC/lo que uses
+    // print("Go -> $s");
   }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
+        // Rail SIEMPRE visible
         DSProjectRail(onLogoTap: _toggleMenu),
 
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 400),
-          curve: Curves.easeInOut,
-          width: _isCollapsed ? 0 : _sidebarWidth,
-          child: ClipRect(
-            child: SizedBox(
-              width: _sidebarWidth,
-              child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 400),
-                layoutBuilder: (currentChild, previousChildren) => Stack(
-                  alignment: Alignment.centerLeft,
-                  children: [
-                    ...previousChildren,
-                    if (currentChild != null) currentChild,
-                  ],
+        // “slot” fijo de 240 px donde el sidebar vive
+        SizedBox(
+          width: _sidebarWidth,
+          height: double.infinity,
+          child: Stack(
+            clipBehavior: Clip.hardEdge, // nada se dibuja fuera del slot
+            children: [
+              AnimatedPositioned(
+                duration: const Duration(milliseconds: 380),
+                curve: Curves.easeInOut,
+                // cuando está colapsado, lo movemos completamente fuera a la izquierda
+                left: _isCollapsed ? -_sidebarWidth : 0,
+                top: 0,
+                bottom: 0,
+                width: _sidebarWidth,
+                child: DSMainSidebar(
+                  current: _current,
+                  onSectionTap: _onSectionTap,
                 ),
-                transitionBuilder: (child, animation) {
-                  final isEntering = child.key == const ValueKey("expanded");
-                  final tween = Tween<Offset>(
-                    begin: isEntering ? const Offset(-1, 0) : Offset.zero,
-                    end: isEntering ? Offset.zero : const Offset(1, 0),
-                  );
-                  return SlideTransition(
-                    position: tween.animate(
-                      CurvedAnimation(
-                        parent: animation,
-                        curve: Curves.easeInOut,
-                      ),
-                    ),
-                    child: child,
-                  );
-                },
-                child: _isCollapsed
-                    ? const SizedBox.shrink(key: ValueKey("collapsed"))
-                    : DSMainSidebar(
-                        key: const ValueKey("expanded"),
-                        current: _current,
-                        onSectionTap: _onSectionTap,
-                      ),
               ),
-            ),
+            ],
           ),
         ),
       ],

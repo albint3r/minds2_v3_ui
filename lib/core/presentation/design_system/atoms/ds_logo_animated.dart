@@ -47,7 +47,7 @@ class _DSLogoAnimatedState extends State<DSLogoAnimated> {
         message: widget.tooltip ?? "",
         child: TweenAnimationBuilder<double>(
           tween: Tween(begin: 0, end: _turns),
-          duration: const Duration(milliseconds: 600),
+          duration: const Duration(milliseconds: 400),
           curve: Curves.easeInOut,
           builder: (context, value, child) {
             return Transform.rotate(
