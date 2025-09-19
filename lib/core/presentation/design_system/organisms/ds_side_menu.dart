@@ -11,55 +11,69 @@ class DSSideMenu extends StatefulWidget {
 }
 
 class _DSSideMenuState extends State<DSSideMenu> {
-  static const double _railWidth = 64;
   static const double _sidebarWidth = 240;
-
   bool _isCollapsed = false;
+  DSSection _current = DSSection.home; // <- fuente de verdad actual
 
   void _toggleMenu() => setState(() => _isCollapsed = !_isCollapsed);
 
+  void _onSectionTap(DSSection s) {
+    setState(() => _current = s); // 1) marca seleccionado
+    // 2) dispara tu navegación/bloc/evento
+    // context.read<NavBloc>().add(NavigateTo(s));
+    // o go_router / auto_route / setState de tu layout... lo que uses
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox.expand(
-      child: Stack(
-        children: [
-          // ───────── Sidebar (debajo del rail) ─────────
-          // Ocupa su caja a la derecha del rail y se desliza dentro de ella.
-          Positioned(
-            left: _railWidth,
-            top: 0,
-            bottom: 0,
-            width: _sidebarWidth,
-            child: ClipRect(
-              child: IgnorePointer(
-                ignoring: _isCollapsed, // no clics cuando está oculto
-                child: AnimatedOpacity(
-                  opacity: _isCollapsed ? 0.0 : 1.0,
-                  duration: const Duration(milliseconds: 150),
-                  curve: Curves.easeOut,
-                  child: AnimatedSlide(
-                    // Entra desde la IZQUIERDA (-1→0). Sale hacia la IZQUIERDA (0→-1).
-                    offset: _isCollapsed ? const Offset(-1, 0) : Offset.zero,
-                    duration: const Duration(milliseconds: 350),
-                    curve: Curves.easeInOut,
-                    child: const DSMainSidebar(width: _sidebarWidth),
-                  ),
+    return Row(
+      children: [
+        DSProjectRail(onLogoTap: _toggleMenu),
+
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.easeInOut,
+          width: _isCollapsed ? 0 : _sidebarWidth,
+          child: ClipRect(
+            child: SizedBox(
+              width: _sidebarWidth,
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 400),
+                layoutBuilder: (currentChild, previousChildren) => Stack(
+                  alignment: Alignment.centerLeft,
+                  children: [
+                    ...previousChildren,
+                    if (currentChild != null) currentChild,
+                  ],
                 ),
+                transitionBuilder: (child, animation) {
+                  final isEntering = child.key == const ValueKey("expanded");
+                  final tween = Tween<Offset>(
+                    begin: isEntering ? const Offset(-1, 0) : Offset.zero,
+                    end: isEntering ? Offset.zero : const Offset(1, 0),
+                  );
+                  return SlideTransition(
+                    position: tween.animate(
+                      CurvedAnimation(
+                        parent: animation,
+                        curve: Curves.easeInOut,
+                      ),
+                    ),
+                    child: child,
+                  );
+                },
+                child: _isCollapsed
+                    ? const SizedBox.shrink(key: ValueKey("collapsed"))
+                    : DSMainSidebar(
+                        key: const ValueKey("expanded"),
+                        current: _current,
+                        onSectionTap: _onSectionTap,
+                      ),
               ),
             ),
           ),
-
-          // ───────── Rail (encima) ─────────
-          // Siempre visible, encima del sidebar.
-          Positioned(
-            left: 0,
-            top: 0,
-            bottom: 0,
-            width: _railWidth,
-            child: DSProjectRail(onLogoTap: _toggleMenu),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
