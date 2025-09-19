@@ -17,12 +17,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.home,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.conversation({
@@ -30,12 +32,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.conversation,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   // Usuario
@@ -44,12 +48,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.contact,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.funnel({
@@ -57,12 +63,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.funnel,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.calendar({
@@ -70,12 +78,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.calendar,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.campaign({
@@ -83,12 +93,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.campaign,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.aiBuilder({
@@ -96,12 +108,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.aiBuilder,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.integrations({
@@ -109,12 +123,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.integrations,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.team({
@@ -122,12 +138,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.team,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.billing({
@@ -135,12 +153,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.billing,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.integrationsApply({
@@ -148,12 +168,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.integrationsApply,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.logout({
@@ -161,12 +183,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.logout,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   // Acciones
@@ -175,12 +199,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.add,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.check({
@@ -188,12 +214,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.check,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.approved({
@@ -201,12 +229,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.approved,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.close({
@@ -214,12 +244,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.close,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.checkBoxSelected({
@@ -227,12 +259,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.checkBoxSelected,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.checkBox({
@@ -240,12 +274,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.checkBox,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.circularAvatarNumber({
@@ -253,12 +289,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.circularAvatarNumber,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   // Mensajes / bots
@@ -267,12 +305,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.message,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.aiBot({
@@ -280,12 +320,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.aiBot,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.integrationWorkflow({
@@ -293,12 +335,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.integrationWorkflow,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.notification({
@@ -306,12 +350,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.notification,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   // Sistema
@@ -320,12 +366,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.configuration,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.supportAgent({
@@ -333,12 +381,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.supportAgent,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.search({
@@ -346,12 +396,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.search,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.back({
@@ -359,12 +411,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.back,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.next({
@@ -372,12 +426,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.next,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.arrowDropDown({
@@ -385,12 +441,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.arrowDropDown,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.profile({
@@ -398,12 +456,14 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.profile,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   const DSIcon.addRounded({
@@ -411,27 +471,31 @@ class DSIcon extends StatelessWidget {
     DSIconType type = DSIconType.normal,
     DSIconSizeName size = DSIconSizeName.md,
     String? semanticLabel,
+    String? message,
   }) : this._(
          DSIcons.addRounded,
          key: key,
          type: type,
          size: size,
          semanticLabel: semanticLabel,
+         message: message,
        );
 
   // ──────────────────────── base privada ────────────────────────
   const DSIcon._(
     this.icon, {
-    Key? key,
+    super.key,
     this.type = DSIconType.normal,
     this.size = DSIconSizeName.md,
     this.semanticLabel,
-  }) : super(key: key);
+    this.message,
+  });
 
   final IconData icon;
   final DSIconType type;
   final DSIconSizeName size;
   final String? semanticLabel;
+  final String? message;
 
   // para cambiar tono/tamaño desde otros átomos (p.ej. botones del sidebar)
   DSIcon copyWith({DSIconType? type, DSIconSizeName? size}) {
@@ -464,11 +528,14 @@ class DSIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
-    return Icon(
-      icon,
-      size: _px(size),
-      color: _color(type, cs),
-      semanticLabel: semanticLabel,
+    return Tooltip(
+      message: message ?? "",
+      child: Icon(
+        icon,
+        size: _px(size),
+        color: _color(type, cs),
+        semanticLabel: semanticLabel,
+      ),
     );
   }
 }

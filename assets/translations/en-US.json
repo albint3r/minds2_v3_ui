@@ -10,6 +10,11 @@
     "lastActionDate": "Last Action: {}",
     "avgDaily": "Avg. Daily",
     "appointments": "Appt.",
+    "navRail": {
+      "toolTips": {
+        "add": "Create new project or request access to a existing one."
+      }
+    },
     "earnings": {
       "moreThanPrevious": "You earned {amount} more than the previous period",
       "lessThanPrevious": "You earned {amount} less than the previous period"

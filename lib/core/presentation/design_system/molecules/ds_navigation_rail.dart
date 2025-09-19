@@ -1,3 +1,4 @@
+import "package:easy_localization/easy_localization.dart";
 import "package:flutter/material.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_gap.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_icon.dart";
@@ -13,7 +14,6 @@ class DSProjectRail extends StatelessWidget {
   const DSProjectRail({super.key});
 
   static const double _railWidth = 64;
-  static const double _logoRadius = 20;
   static const double _itemSize = 40;
 
   // ⚠️ Lista hardcodeada (mock) de proyectos
@@ -39,7 +39,10 @@ class DSProjectRail extends StatelessWidget {
           const DSGap.xxl(),
           Assets.images.logo.minds2LogoSymbol.image(height: 35),
           const DSGap.sm(),
-          const DSIcon.add(),
+          DSIcon.add(
+            message: "ds.navRail.toolTips.add".tr(),
+            type: DSIconType.surface,
+          ),
           const DSGap.xl(),
           // LISTA HARD-CODEADA DE PROYECTOS
           Expanded(
