@@ -52,19 +52,30 @@ class DSProjectRail extends StatelessWidget {
           Expanded(
             child: ListView.separated(
               itemCount: _projects.length,
-              separatorBuilder: (_, _) => const DSGap.sm(),
+              separatorBuilder: (_, __) => const DSGap.sm(),
               itemBuilder: (context, index) {
                 final url = _projects[index];
+                final bool isSelected = index == 0;
+
                 return Center(
-                  child: SizedBox(
+                  child: Container(
                     width: _itemSize,
                     height: _itemSize,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle, // 👈 círculo en lugar de cuadrado
+                      border: isSelected
+                          ? Border.all(
+                        color: DSColors.alert.success[500]!, // 👈 borde naranja correcto
+                        width: 2.5,
+                      )
+                          : null,
+                    ),
+                    child: ClipOval(
                       child: DSProfileAvatar(imageUrl: url),
                     ),
                   ),
                 );
+
               },
             ),
           ),
