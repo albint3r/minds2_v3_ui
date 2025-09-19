@@ -29,7 +29,7 @@ class DSIcon extends StatelessWidget {
          semanticLabel: semanticLabel,
        );
 
-  const DSIcon.muted(
+  const DSIcon.surface(
     IconData icon, {
     Key? key,
     DSIconSizeName size = DSIconSizeName.md,
@@ -190,7 +190,7 @@ class DSIcon extends StatelessWidget {
 
   Color _color(DSIconTone t, ColorScheme cs) => switch (t) {
     DSIconTone.normal => DSIconColors.normal(cs),
-    DSIconTone.muted => DSIconColors.muted(cs),
+    DSIconTone.muted => DSIconColors.surface(cs),
     DSIconTone.disabled => DSIconColors.disabled(cs),
     DSIconTone.selected => DSIconColors.selected(cs),
     DSIconTone.warning => DSIconColors.warning(cs),

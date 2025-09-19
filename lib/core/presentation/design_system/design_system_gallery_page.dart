@@ -6,6 +6,7 @@ import "package:minds2_ui_v3/core/presentation/design_system/gallery/buttons_gal
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/cards_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/colors_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/icons_gallery.dart";
+import "package:minds2_ui_v3/core/presentation/design_system/gallery/sidebar_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/spacing_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/textfield_gallery.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/gallery/typography_gallery.dart";
@@ -125,6 +126,16 @@ class DesignSystemGalleryPage extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const DSMetricCardGallery()),
+            ),
+          ),
+          const Divider(height: 1),
+          ListTile(
+            title: DSText.labels("SideBar Menu".tr()),
+            subtitle: DSText.paragraph("Main Menu".tr()),
+            trailing: const DSIcon.md(DSIcons.next),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const SidebarGallery()),
             ),
           ),
         ],

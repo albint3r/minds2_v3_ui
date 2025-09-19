@@ -62,7 +62,7 @@ class DSIconColors {
 
   static Color normal(ColorScheme cs) => cs.onSurface;
 
-  static Color muted(ColorScheme cs) => cs.onSurface.withValues(alpha: .60);
+  static Color surface(ColorScheme cs) => cs.surface;
 
   static Color disabled(ColorScheme cs) => cs.onSurface.withValues(alpha: .38);
 
