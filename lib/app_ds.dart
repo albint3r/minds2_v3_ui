@@ -1,25 +1,27 @@
+// lib/core/presentation/design_system/ds_app.dart
 import "package:easy_localization/easy_localization.dart";
 import "package:flutter/material.dart";
-import "package:minds2_ui_v3/core/presentation/design_system/design_system_gallery_page.dart";
-import "package:minds2_ui_v3/core/presentation/design_system/theme/theme_config.dart" show ThemeConfig;
+import "package:minds2_ui_v3/core/presentation/design_system/theme/theme_config.dart";
+import "package:minds2_ui_v3/core/router/app_router.dart";
+import "package:minds2_ui_v3/core/router/material_app_router_delegate.dart";
 import "package:minds2_ui_v3/injectables.dart";
 
 class DSApp extends StatelessWidget {
-  const DSApp({super.key});
+  const DSApp({super.key, required this.messengerKey});
+
+  final GlobalKey<ScaffoldMessengerState> messengerKey;
 
   @override
   Widget build(BuildContext context) {
     final theme = getIt<ThemeConfig>();
+    final router = getIt<AppRouter>().router; // GoRouter ya armado
 
-    return MaterialApp(
-      title: "Minds2 DS",
-      theme: theme.light,
-      debugShowCheckedModeBanner: false,
-      // 👇 necesario para que cargue las traducciones
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      home: const DesignSystemGalleryPage(),
+    return MaterialAppRouterDelegate.router(
+      "Minds2 DS",
+      router: router,
+      themeConfig: theme,
+      messengerKey: messengerKey,
+      context: context, // i18n (EasyLocalization)
     );
   }
 }

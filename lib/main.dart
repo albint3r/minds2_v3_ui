@@ -13,7 +13,6 @@ Future<void> main() async {
   Bloc.observer = AppBlocObserver(messengerKey);
   final authController = getIt<AuthController>();
   await authController.bootstrap();
-
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale("en", "US"), Locale("es", "MX")],
@@ -21,7 +20,7 @@ Future<void> main() async {
       fallbackLocale: const Locale("en", "US"),
       // Si usas en.json / es.json, activa:
       // useOnlyLangCode: true,
-      child: const DSApp(),
+      child: DSApp(messengerKey: messengerKey),
     ),
   );
 }

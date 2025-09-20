@@ -23,6 +23,7 @@ import 'core/infrastructure/app_bloc_observer.dart' as _i610;
 import 'core/infrastructure/register_module.dart' as _i658;
 import 'core/infrastructure/shared_pref.dart' as _i41;
 import 'core/presentation/design_system/theme/theme_config.dart' as _i689;
+import 'core/router/app_router.dart' as _i110;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 Future<_i174.GetIt> $initGetIt(
@@ -67,6 +68,9 @@ Future<_i174.GetIt> $initGetIt(
   );
   gh.singleton<_i722.AuthController>(
     () => _i722.AuthController(gh<_i253.IAuthDataSource>()),
+  );
+  gh.lazySingleton<_i110.AppRouter>(
+    () => _i110.AppRouter(gh<_i722.AuthController>()),
   );
   return getIt;
 }
