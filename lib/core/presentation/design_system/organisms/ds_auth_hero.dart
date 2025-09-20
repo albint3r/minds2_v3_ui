@@ -12,27 +12,29 @@ class DSAuthHero extends StatelessWidget {
     required this.titleSecondary,
     required this.backgroundImage,
     this.centerImage, // 👈 imagen opcional en el centro
-    this.width = 1000,
   });
 
   final String titlePrimary;
   final String titleSecondary;
   final ImageProvider backgroundImage;
   final ImageProvider? centerImage;
-  final double width;
 
   @override
   Widget build(BuildContext context) {
     final g = DSColors.secondary.gradient;
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
+    const alpha = 0.90;
     final overlayColors = <Color>[
-      g[0].withValues(alpha: 0.78),
-      g[1].withValues(alpha: 0.62),
-      g[2].withValues(alpha: 0.62),
-      g[3].withValues(alpha: 0.90),
+      g[0].withValues(alpha: alpha),
+      g[1].withValues(alpha: alpha),
+      g[2].withValues(alpha: alpha),
+      g[3].withValues(alpha: alpha),
     ];
 
     return SizedBox(
-      width: width,
+      width: width / 2,
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -71,7 +73,7 @@ class DSAuthHero extends StatelessWidget {
                     child: Image(image: centerImage!, fit: BoxFit.contain),
                   ),
                 ),
-              const Spacer(),
+
               // Logo abajo a la derecha
               Padding(
                 padding: const EdgeInsets.only(right: DSSpacing.xl),

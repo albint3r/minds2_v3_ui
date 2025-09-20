@@ -27,7 +27,7 @@ class DsDualText extends StatelessWidget {
           color: DSColors.primary.brand[500], // naranja
           textAlign: align,
         ),
-        DSText.heading2(
+        DSText.heading1(
           secondary,
           color: DSColors.primary.ink[25], // blanco
           textAlign: align,
