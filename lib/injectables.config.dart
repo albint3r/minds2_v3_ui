@@ -72,7 +72,10 @@ Future<_i174.GetIt> $initGetIt(
     () => _i250.AuthFacadeImpl(gh<_i253.IAuthDataSource>()),
   );
   await gh.singletonAsync<_i979.AuthBloc>(
-    () => registerModule.authBloc(gh<_i388.IAuthFacade>()),
+    () => registerModule.authBloc(
+      gh<_i388.IAuthFacade>(),
+      gh<_i460.SharedPreferences>(),
+    ),
     preResolve: true,
   );
   gh.lazySingleton<_i110.AppRouter>(

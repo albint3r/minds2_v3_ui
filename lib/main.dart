@@ -5,6 +5,7 @@ import "package:injectable/injectable.dart";
 import "package:minds2_ui_v3/app.dart";
 import "package:minds2_ui_v3/auth/aplication/auth_bloc.dart";
 import "package:minds2_ui_v3/core/infrastructure/app_bloc_observer.dart";
+import "package:minds2_ui_v3/core/infrastructure/app_config.dart";
 import "package:minds2_ui_v3/injectables.dart";
 
 Future<void> main() async {
@@ -13,22 +14,16 @@ Future<void> main() async {
 
   final messengerKey = GlobalKey<ScaffoldMessengerState>();
   Bloc.observer = AppBlocObserver(messengerKey);
-  // 2) Resuelve el singleton del bloc (inyectado con IAuthFacade por DI)
+  // instancia ya creada con DI
   final authBloc = getIt<AuthBloc>();
 
-  // 3) Siembra el estado (evento)
-  authBloc.add(AuthEvent.started());
-
-  // (Opcional) Espera a que quede listo antes del primer frame
-  // await authBloc.stream.firstWhere((s) => s.appUser != null && !s.isLoading);
-
   runApp(
-    BlocProvider.value(
-      value: authBloc, // ¡ojo! value porque es singleton (no se cierra)
+    MultiBlocProvider(
+      providers: [BlocProvider<AuthBloc>.value(value: authBloc)],
       child: EasyLocalization(
-        supportedLocales: const [Locale('en', 'US'), Locale('es', 'MX')],
-        path: 'assets/translations',
-        fallbackLocale: const Locale('en', 'US'),
+        supportedLocales: AppConfig.supportedLocales,
+        path: AppConfig.translationPath,
+        fallbackLocale: AppConfig.fallbackLocale,
         child: App(messengerKey: messengerKey),
       ),
     ),
