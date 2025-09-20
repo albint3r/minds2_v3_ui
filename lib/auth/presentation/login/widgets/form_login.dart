@@ -13,6 +13,9 @@ class FormLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     final auth = context.watch<AuthBloc>().state;
     final formGroup = auth.formGroup;
+    if (auth.isLoading || formGroup == null) {
+      return const CircularProgressIndicator();
+    }
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,

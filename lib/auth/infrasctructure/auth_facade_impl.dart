@@ -32,4 +32,10 @@ class AuthFacadeImpl implements IAuthFacade {
     await _pref.setToken(token);
     return (appUser, token);
   }
+
+  @override
+  Future<void> logOut() async {
+    await _pref.deleteToken();
+    _fromGroup = DSForm.empty;
+  }
 }

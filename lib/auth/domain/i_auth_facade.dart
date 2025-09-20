@@ -9,4 +9,5 @@ abstract interface class IAuthFacade {
   void cleanForm();
 
   Future<(User, String)> logIn();
+  Future<void> logOut();
 }

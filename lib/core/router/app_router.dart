@@ -6,13 +6,19 @@ import "package:minds2_ui_v3/auth/aplication/auth_bloc.dart";
 import "package:minds2_ui_v3/auth/domain/user.dart";
 import "package:minds2_ui_v3/auth/presentation/login/login_page.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/design_system_gallery_page.dart";
+import "package:minds2_ui_v3/home_project/presentation/home_project_page.dart";
 
 @lazySingleton
 class AppRouter {
   AppRouter(this._authBloc)
     : _router = GoRouter(
-        initialLocation: "/gallery",
+        initialLocation: "/home-project",
         routes: [
+          GoRoute(
+            path: "/home-project",
+            name: "Home",
+            builder: (_, __) => const HomeProjectPage(),
+          ),
           GoRoute(
             path: "/gallery",
             name: "gallery",
@@ -68,4 +74,12 @@ class AppRouter {
   final GoRouter _router;
 
   GoRouter get router => _router;
+
+  void go(String location) => _router.go(location);
+
+  Future<T?> push<T>(String loc) => _router.push<T>(loc);
+
+  void replace(String loc) => _router.replace(loc);
+
+  void pop<T extends Object?>([T? result]) => _router.pop(result);
 }

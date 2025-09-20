@@ -1,5 +1,7 @@
 // lib/core/presentation/design_system/molecules/ds_main_sidebar.dart
 import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:minds2_ui_v3/auth/aplication/auth_bloc.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_gap.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_icon.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_side_bar_button.dart";
@@ -205,8 +207,7 @@ class DSMainSidebar extends StatelessWidget {
                 onSectionTap?.call(DSSection.support);
               },
               onLogout: () {
-                // ignore: avoid_print
-                print("[Sidebar] Logout tapped");
+                context.read<AuthBloc>().add(const AuthEvent.logOut());
                 onSectionTap?.call(DSSection.logout);
               },
             ),

@@ -5,4 +5,5 @@ abstract interface class IAuthDataSource {
   Future<User> getMe();
 
   Future<(User, String)> logIn(Json body);
+
 }

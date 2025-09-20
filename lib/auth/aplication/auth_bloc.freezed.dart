@@ -55,12 +55,13 @@ extension AuthEventPatterns on AuthEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _StartLogIn value)?  startLogIn,TResult Function( _LogIn value)?  logIn,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _StartLogIn value)?  startLogIn,TResult Function( _LogIn value)?  logIn,TResult Function( _LogOut value)?  logOut,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _StartLogIn() when startLogIn != null:
 return startLogIn(_that);case _LogIn() when logIn != null:
-return logIn(_that);case _:
+return logIn(_that);case _LogOut() when logOut != null:
+return logOut(_that);case _:
   return orElse();
 
 }
@@ -78,12 +79,13 @@ return logIn(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _StartLogIn value)  startLogIn,required TResult Function( _LogIn value)  logIn,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _StartLogIn value)  startLogIn,required TResult Function( _LogIn value)  logIn,required TResult Function( _LogOut value)  logOut,}){
 final _that = this;
 switch (_that) {
 case _StartLogIn():
 return startLogIn(_that);case _LogIn():
-return logIn(_that);case _:
+return logIn(_that);case _LogOut():
+return logOut(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -100,12 +102,13 @@ return logIn(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _StartLogIn value)?  startLogIn,TResult? Function( _LogIn value)?  logIn,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _StartLogIn value)?  startLogIn,TResult? Function( _LogIn value)?  logIn,TResult? Function( _LogOut value)?  logOut,}){
 final _that = this;
 switch (_that) {
 case _StartLogIn() when startLogIn != null:
 return startLogIn(_that);case _LogIn() when logIn != null:
-return logIn(_that);case _:
+return logIn(_that);case _LogOut() when logOut != null:
+return logOut(_that);case _:
   return null;
 
 }
@@ -122,11 +125,12 @@ return logIn(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  startLogIn,TResult Function()?  logIn,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  startLogIn,TResult Function()?  logIn,TResult Function()?  logOut,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _StartLogIn() when startLogIn != null:
 return startLogIn();case _LogIn() when logIn != null:
-return logIn();case _:
+return logIn();case _LogOut() when logOut != null:
+return logOut();case _:
   return orElse();
 
 }
@@ -144,11 +148,12 @@ return logIn();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  startLogIn,required TResult Function()  logIn,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  startLogIn,required TResult Function()  logIn,required TResult Function()  logOut,}) {final _that = this;
 switch (_that) {
 case _StartLogIn():
 return startLogIn();case _LogIn():
-return logIn();case _:
+return logIn();case _LogOut():
+return logOut();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -165,11 +170,12 @@ return logIn();case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  startLogIn,TResult? Function()?  logIn,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  startLogIn,TResult? Function()?  logIn,TResult? Function()?  logOut,}) {final _that = this;
 switch (_that) {
 case _StartLogIn() when startLogIn != null:
 return startLogIn();case _LogIn() when logIn != null:
-return logIn();case _:
+return logIn();case _LogOut() when logOut != null:
+return logOut();case _:
   return null;
 
 }
@@ -233,6 +239,38 @@ int get hashCode => runtimeType.hashCode;
 @override
 String toString() {
   return 'AuthEvent.logIn()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _LogOut implements AuthEvent {
+  const _LogOut();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LogOut);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthEvent.logOut()';
 }
 
 
