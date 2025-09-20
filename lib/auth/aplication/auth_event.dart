@@ -2,5 +2,7 @@ part of "auth_bloc.dart";
 
 @freezed
 abstract class AuthEvent with _$AuthEvent {
-  const factory AuthEvent.started({User? appUser}) = _Started;
+  const factory AuthEvent.startLogIn() = _StartLogIn;
+
+  const factory AuthEvent.logIn() = _LogIn;
 }

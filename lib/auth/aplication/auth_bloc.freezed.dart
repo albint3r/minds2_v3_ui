@@ -14,73 +14,30 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AuthEvent {
 
- User? get appUser;
-/// Create a copy of AuthEvent
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$AuthEventCopyWith<AuthEvent> get copyWith => _$AuthEventCopyWithImpl<AuthEvent>(this as AuthEvent, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthEvent&&(identical(other.appUser, appUser) || other.appUser == appUser));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthEvent);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,appUser);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthEvent(appUser: $appUser)';
+  return 'AuthEvent()';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $AuthEventCopyWith<$Res>  {
-  factory $AuthEventCopyWith(AuthEvent value, $Res Function(AuthEvent) _then) = _$AuthEventCopyWithImpl;
-@useResult
-$Res call({
- User? appUser
-});
-
-
-$UserCopyWith<$Res>? get appUser;
-
-}
-/// @nodoc
-class _$AuthEventCopyWithImpl<$Res>
-    implements $AuthEventCopyWith<$Res> {
-  _$AuthEventCopyWithImpl(this._self, this._then);
-
-  final AuthEvent _self;
-  final $Res Function(AuthEvent) _then;
-
-/// Create a copy of AuthEvent
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? appUser = freezed,}) {
-  return _then(_self.copyWith(
-appUser: freezed == appUser ? _self.appUser : appUser // ignore: cast_nullable_to_non_nullable
-as User?,
-  ));
-}
-/// Create a copy of AuthEvent
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$UserCopyWith<$Res>? get appUser {
-    if (_self.appUser == null) {
-    return null;
-  }
-
-  return $UserCopyWith<$Res>(_self.appUser!, (value) {
-    return _then(_self.copyWith(appUser: value));
-  });
-}
+class $AuthEventCopyWith<$Res>  {
+$AuthEventCopyWith(AuthEvent _, $Res Function(AuthEvent) __);
 }
 
 
@@ -98,11 +55,12 @@ extension AuthEventPatterns on AuthEvent {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Started value)?  started,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _StartLogIn value)?  startLogIn,TResult Function( _LogIn value)?  logIn,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Started() when started != null:
-return started(_that);case _:
+case _StartLogIn() when startLogIn != null:
+return startLogIn(_that);case _LogIn() when logIn != null:
+return logIn(_that);case _:
   return orElse();
 
 }
@@ -120,11 +78,12 @@ return started(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Started value)  started,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _StartLogIn value)  startLogIn,required TResult Function( _LogIn value)  logIn,}){
 final _that = this;
 switch (_that) {
-case _Started():
-return started(_that);case _:
+case _StartLogIn():
+return startLogIn(_that);case _LogIn():
+return logIn(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -141,11 +100,12 @@ return started(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Started value)?  started,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _StartLogIn value)?  startLogIn,TResult? Function( _LogIn value)?  logIn,}){
 final _that = this;
 switch (_that) {
-case _Started() when started != null:
-return started(_that);case _:
+case _StartLogIn() when startLogIn != null:
+return startLogIn(_that);case _LogIn() when logIn != null:
+return logIn(_that);case _:
   return null;
 
 }
@@ -162,10 +122,11 @@ return started(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( User? appUser)?  started,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  startLogIn,TResult Function()?  logIn,required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Started() when started != null:
-return started(_that.appUser);case _:
+case _StartLogIn() when startLogIn != null:
+return startLogIn();case _LogIn() when logIn != null:
+return logIn();case _:
   return orElse();
 
 }
@@ -183,10 +144,11 @@ return started(_that.appUser);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( User? appUser)  started,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  startLogIn,required TResult Function()  logIn,}) {final _that = this;
 switch (_that) {
-case _Started():
-return started(_that.appUser);case _:
+case _StartLogIn():
+return startLogIn();case _LogIn():
+return logIn();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -203,10 +165,11 @@ return started(_that.appUser);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( User? appUser)?  started,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  startLogIn,TResult? Function()?  logIn,}) {final _that = this;
 switch (_that) {
-case _Started() when started != null:
-return started(_that.appUser);case _:
+case _StartLogIn() when startLogIn != null:
+return startLogIn();case _LogIn() when logIn != null:
+return logIn();case _:
   return null;
 
 }
@@ -217,85 +180,71 @@ return started(_that.appUser);case _:
 /// @nodoc
 
 
-class _Started implements AuthEvent {
-  const _Started({this.appUser});
+class _StartLogIn implements AuthEvent {
+  const _StartLogIn();
   
 
-@override final  User? appUser;
 
-/// Create a copy of AuthEvent
-/// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-_$StartedCopyWith<_Started> get copyWith => __$StartedCopyWithImpl<_Started>(this, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Started&&(identical(other.appUser, appUser) || other.appUser == appUser));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StartLogIn);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,appUser);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'AuthEvent.started(appUser: $appUser)';
+  return 'AuthEvent.startLogIn()';
 }
 
 
 }
+
+
+
 
 /// @nodoc
-abstract mixin class _$StartedCopyWith<$Res> implements $AuthEventCopyWith<$Res> {
-  factory _$StartedCopyWith(_Started value, $Res Function(_Started) _then) = __$StartedCopyWithImpl;
-@override @useResult
-$Res call({
- User? appUser
-});
 
 
-@override $UserCopyWith<$Res>? get appUser;
+class _LogIn implements AuthEvent {
+  const _LogIn();
+  
 
-}
-/// @nodoc
-class __$StartedCopyWithImpl<$Res>
-    implements _$StartedCopyWith<$Res> {
-  __$StartedCopyWithImpl(this._self, this._then);
 
-  final _Started _self;
-  final $Res Function(_Started) _then;
 
-/// Create a copy of AuthEvent
-/// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? appUser = freezed,}) {
-  return _then(_Started(
-appUser: freezed == appUser ? _self.appUser : appUser // ignore: cast_nullable_to_non_nullable
-as User?,
-  ));
-}
 
-/// Create a copy of AuthEvent
-/// with the given fields replaced by the non-null parameter values.
+
+
 @override
-@pragma('vm:prefer-inline')
-$UserCopyWith<$Res>? get appUser {
-    if (_self.appUser == null) {
-    return null;
-  }
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LogIn);
+}
 
-  return $UserCopyWith<$Res>(_self.appUser!, (value) {
-    return _then(_self.copyWith(appUser: value));
-  });
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'AuthEvent.logIn()';
 }
+
+
 }
+
+
+
 
 /// @nodoc
 mixin _$AuthState {
 
- bool get isLoading; String get token; User? get appUser;
+ bool get isLoading; String get token; FormGroup? get formGroup; User? get appUser;
 /// Create a copy of AuthState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -306,16 +255,16 @@ $AuthStateCopyWith<AuthState> get copyWith => _$AuthStateCopyWithImpl<AuthState>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.token, token) || other.token == token)&&(identical(other.appUser, appUser) || other.appUser == appUser));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AuthState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.token, token) || other.token == token)&&(identical(other.formGroup, formGroup) || other.formGroup == formGroup)&&(identical(other.appUser, appUser) || other.appUser == appUser));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoading,token,appUser);
+int get hashCode => Object.hash(runtimeType,isLoading,token,formGroup,appUser);
 
 @override
 String toString() {
-  return 'AuthState(isLoading: $isLoading, token: $token, appUser: $appUser)';
+  return 'AuthState(isLoading: $isLoading, token: $token, formGroup: $formGroup, appUser: $appUser)';
 }
 
 
@@ -326,7 +275,7 @@ abstract mixin class $AuthStateCopyWith<$Res>  {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) _then) = _$AuthStateCopyWithImpl;
 @useResult
 $Res call({
- bool isLoading, String token, User? appUser
+ bool isLoading, String token, FormGroup? formGroup, User? appUser
 });
 
 
@@ -343,11 +292,12 @@ class _$AuthStateCopyWithImpl<$Res>
 
 /// Create a copy of AuthState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? token = null,Object? appUser = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? isLoading = null,Object? token = null,Object? formGroup = freezed,Object? appUser = freezed,}) {
   return _then(_self.copyWith(
 isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
-as String,appUser: freezed == appUser ? _self.appUser : appUser // ignore: cast_nullable_to_non_nullable
+as String,formGroup: freezed == formGroup ? _self.formGroup : formGroup // ignore: cast_nullable_to_non_nullable
+as FormGroup?,appUser: freezed == appUser ? _self.appUser : appUser // ignore: cast_nullable_to_non_nullable
 as User?,
   ));
 }
@@ -445,10 +395,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading,  String token,  User? appUser)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool isLoading,  String token,  FormGroup? formGroup,  User? appUser)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AuthState() when $default != null:
-return $default(_that.isLoading,_that.token,_that.appUser);case _:
+return $default(_that.isLoading,_that.token,_that.formGroup,_that.appUser);case _:
   return orElse();
 
 }
@@ -466,10 +416,10 @@ return $default(_that.isLoading,_that.token,_that.appUser);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading,  String token,  User? appUser)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool isLoading,  String token,  FormGroup? formGroup,  User? appUser)  $default,) {final _that = this;
 switch (_that) {
 case _AuthState():
-return $default(_that.isLoading,_that.token,_that.appUser);case _:
+return $default(_that.isLoading,_that.token,_that.formGroup,_that.appUser);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -486,10 +436,10 @@ return $default(_that.isLoading,_that.token,_that.appUser);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading,  String token,  User? appUser)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool isLoading,  String token,  FormGroup? formGroup,  User? appUser)?  $default,) {final _that = this;
 switch (_that) {
 case _AuthState() when $default != null:
-return $default(_that.isLoading,_that.token,_that.appUser);case _:
+return $default(_that.isLoading,_that.token,_that.formGroup,_that.appUser);case _:
   return null;
 
 }
@@ -501,11 +451,12 @@ return $default(_that.isLoading,_that.token,_that.appUser);case _:
 
 
 class _AuthState implements AuthState {
-  const _AuthState({required this.isLoading, required this.token, this.appUser});
+  const _AuthState({required this.isLoading, required this.token, this.formGroup, this.appUser});
   
 
 @override final  bool isLoading;
 @override final  String token;
+@override final  FormGroup? formGroup;
 @override final  User? appUser;
 
 /// Create a copy of AuthState
@@ -518,16 +469,16 @@ _$AuthStateCopyWith<_AuthState> get copyWith => __$AuthStateCopyWithImpl<_AuthSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuthState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.token, token) || other.token == token)&&(identical(other.appUser, appUser) || other.appUser == appUser));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AuthState&&(identical(other.isLoading, isLoading) || other.isLoading == isLoading)&&(identical(other.token, token) || other.token == token)&&(identical(other.formGroup, formGroup) || other.formGroup == formGroup)&&(identical(other.appUser, appUser) || other.appUser == appUser));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,isLoading,token,appUser);
+int get hashCode => Object.hash(runtimeType,isLoading,token,formGroup,appUser);
 
 @override
 String toString() {
-  return 'AuthState(isLoading: $isLoading, token: $token, appUser: $appUser)';
+  return 'AuthState(isLoading: $isLoading, token: $token, formGroup: $formGroup, appUser: $appUser)';
 }
 
 
@@ -538,7 +489,7 @@ abstract mixin class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Re
   factory _$AuthStateCopyWith(_AuthState value, $Res Function(_AuthState) _then) = __$AuthStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool isLoading, String token, User? appUser
+ bool isLoading, String token, FormGroup? formGroup, User? appUser
 });
 
 
@@ -555,11 +506,12 @@ class __$AuthStateCopyWithImpl<$Res>
 
 /// Create a copy of AuthState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? token = null,Object? appUser = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? isLoading = null,Object? token = null,Object? formGroup = freezed,Object? appUser = freezed,}) {
   return _then(_AuthState(
 isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,token: null == token ? _self.token : token // ignore: cast_nullable_to_non_nullable
-as String,appUser: freezed == appUser ? _self.appUser : appUser // ignore: cast_nullable_to_non_nullable
+as String,formGroup: freezed == formGroup ? _self.formGroup : formGroup // ignore: cast_nullable_to_non_nullable
+as FormGroup?,appUser: freezed == appUser ? _self.appUser : appUser // ignore: cast_nullable_to_non_nullable
 as User?,
   ));
 }

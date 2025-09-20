@@ -10,7 +10,7 @@ class SharedPref {
 
   String getToken() {
     final token = _pref.getString(_token);
-    return token is String ? "Bearer $token" : "";
+    return token is String ? token : "";
   }
 
   Future<void> setToken(String sessionToken) =>

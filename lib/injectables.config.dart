@@ -69,7 +69,10 @@ Future<_i174.GetIt> $initGetIt(
     () => _i513.AuthDataSourceImpl(gh<_i361.Dio>()),
   );
   gh.factory<_i388.IAuthFacade>(
-    () => _i250.AuthFacadeImpl(gh<_i253.IAuthDataSource>()),
+    () => _i250.AuthFacadeImpl(
+      gh<_i253.IAuthDataSource>(),
+      gh<_i41.SharedPref>(),
+    ),
   );
   await gh.singletonAsync<_i979.AuthBloc>(
     () => registerModule.authBloc(

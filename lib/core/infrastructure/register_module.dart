@@ -33,6 +33,7 @@ abstract class RegisterModule {
         l.d("App User exist and already connected: ${appUser.name}");
       } catch (e) {
         l.d("User App Don't exist.");
+        sharePref.remove("token");
         appUser = null;
       }
     }

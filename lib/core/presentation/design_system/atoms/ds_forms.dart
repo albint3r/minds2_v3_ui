@@ -2,6 +2,8 @@ import "package:minds2_ui_v3/core/presentation/design_system/atoms/ds_fields.dar
 import "package:reactive_forms/reactive_forms.dart";
 
 class DSForm {
+  static FormGroup get empty => FormGroup({});
+
   static FormGroup get logIn =>
       FormGroup({"email": DSFields.email, "password": DSFields.password});
 

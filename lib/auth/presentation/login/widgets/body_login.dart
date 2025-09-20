@@ -1,4 +1,7 @@
 import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:minds2_ui_v3/auth/aplication/auth_bloc.dart";
+import "package:minds2_ui_v3/auth/presentation/login/widgets/form_login.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/organisms/ds_auth_hero.dart"
     show DSAuthHero;
 import "package:minds2_ui_v3/gen/assets.gen.dart";
@@ -8,7 +11,10 @@ class BodyLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final auth = context.watch<AuthBloc>().state;
+    if (auth.isLoading) return const CircularProgressIndicator();
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         DSAuthHero(
           backgroundImage: Assets.images.auth.robotTest.provider(),
@@ -16,6 +22,7 @@ class BodyLogin extends StatelessWidget {
           titlePrimary: "Welcome",
           titleSecondary: "Back",
         ),
+        const Expanded(child: FormLogin()),
       ],
     );
   }

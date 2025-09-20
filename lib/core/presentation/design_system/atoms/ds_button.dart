@@ -5,55 +5,48 @@ import "package:minds2_ui_v3/core/presentation/design_system/tokens/button_token
 enum DSButtonVariant { primary, outline, dark }
 
 class DSButton extends StatelessWidget {
-  // 🔹 Factorys para facilidad
   factory DSButton.primary({
     Key? key,
     required String label,
-    required VoidCallback onPressed,
-  }) {
-    return DSButton._(
-      key: key,
-      label: label,
-      onPressed: onPressed,
-      variant: DSButtonVariant.primary,
-    );
-  }
+    VoidCallback? onPressed,
+  }) => DSButton._(
+    key: key,
+    label: label,
+    onPressed: onPressed,
+    variant: DSButtonVariant.primary,
+  );
 
   factory DSButton.outline({
     Key? key,
     required String label,
-    required VoidCallback onPressed,
-  }) {
-    return DSButton._(
-      key: key,
-      label: label,
-      onPressed: onPressed,
-      variant: DSButtonVariant.outline,
-    );
-  }
+    VoidCallback? onPressed,
+  }) => DSButton._(
+    key: key,
+    label: label,
+    onPressed: onPressed,
+    variant: DSButtonVariant.outline,
+  );
 
   factory DSButton.dark({
     Key? key,
     required String label,
-    required VoidCallback onPressed,
-  }) {
-    return DSButton._(
-      key: key,
-      label: label,
-      onPressed: onPressed,
-      variant: DSButtonVariant.dark,
-    );
-  }
+    VoidCallback? onPressed,
+  }) => DSButton._(
+    key: key,
+    label: label,
+    onPressed: onPressed,
+    variant: DSButtonVariant.dark,
+  );
 
   const DSButton._({
     super.key,
     required this.label,
-    required this.onPressed,
+    this.onPressed,
     required this.variant,
   });
 
   final String label;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final DSButtonVariant variant;
 
   @override
@@ -61,65 +54,97 @@ class DSButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: _style,
-      child: DSText.labels(
-        label,
-        color: _textColor,
-      ),
+      // ¡no forzamos color aquí!
+      child: DSText.labels(label),
     );
   }
 
-  // 🔹 Estilos por variante (siempre ElevatedButton)
+  // helpers
+  T _byState<T>(
+    Set<WidgetState> s, {
+    required T enabled,
+    required T disabled,
+  }) => s.contains(WidgetState.disabled) ? disabled : enabled;
+
   ButtonStyle get _style {
-    const minimumSize=  Size(
-      DSButtonTokens.minWidth,
-      DSButtonTokens.minHeight,
+    const minSize = Size(DSButtonTokens.minWidth, DSButtonTokens.minHeight);
+    final shape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(DSButtonTokens.radius),
     );
 
     switch (variant) {
       case DSButtonVariant.primary:
-        return ElevatedButton.styleFrom(
-          backgroundColor: DSButtonTokens.primaryBg,
-          padding: DSButtonTokens.padding,
-          minimumSize: minimumSize,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(DSButtonTokens.radius),
+        return ButtonStyle(
+          minimumSize: const WidgetStatePropertyAll(minSize),
+          padding: WidgetStatePropertyAll(DSButtonTokens.padding),
+          shape: WidgetStatePropertyAll(shape),
+          backgroundColor: WidgetStateProperty.resolveWith(
+            (s) => _byState<Color>(
+              s,
+              enabled: DSButtonTokens.primaryBg,
+              disabled: DSButtonTokens.disable,
+            ),
           ),
-        );
-      case DSButtonVariant.outline:
-        return ElevatedButton.styleFrom(
-          backgroundColor: Colors.transparent,
-          foregroundColor: DSButtonTokens.outlineLabel,
-          side: BorderSide(color: DSButtonTokens.outlineBorder, width: 1.5),
-          padding: DSButtonTokens.padding,
-          minimumSize: minimumSize,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(DSButtonTokens.radius),
+          foregroundColor: WidgetStateProperty.resolveWith(
+            (s) => _byState<Color>(
+              s,
+              enabled: DSButtonTokens.primaryLabel,
+              disabled: DSButtonTokens.disable,
+            ),
           ),
-          elevation: 0,
-          // para mantener el estilo plano
-          shadowColor: Colors.transparent,
+          elevation: const WidgetStatePropertyAll(0),
+          shadowColor: const WidgetStatePropertyAll(Colors.transparent),
         );
-      case DSButtonVariant.dark:
-        return ElevatedButton.styleFrom(
-          backgroundColor: DSButtonTokens.darkBg,
-          padding: DSButtonTokens.padding,
-          minimumSize: minimumSize,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(DSButtonTokens.radius),
-          ),
-        );
-    }
-  }
 
-  // 🔹 Color de texto según variante
-  Color get _textColor {
-    switch (variant) {
-      case DSButtonVariant.primary:
-        return DSButtonTokens.primaryLabel;
       case DSButtonVariant.outline:
-        return DSButtonTokens.outlineLabel;
+        return ButtonStyle(
+          minimumSize: const WidgetStatePropertyAll(minSize),
+          padding: WidgetStatePropertyAll(DSButtonTokens.padding),
+          shape: WidgetStatePropertyAll(shape),
+          backgroundColor: const WidgetStatePropertyAll(Colors.transparent),
+          foregroundColor: WidgetStateProperty.resolveWith(
+            (s) => _byState<Color>(
+              s,
+              enabled: DSButtonTokens.outlineLabel,
+              disabled: DSButtonTokens.disable,
+            ),
+          ),
+          side: WidgetStateProperty.resolveWith(
+            (s) => BorderSide(
+              color: _byState<Color>(
+                s,
+                enabled: DSButtonTokens.outlineBorder,
+                disabled: DSButtonTokens.disable,
+              ),
+              width: 1.5,
+            ),
+          ),
+          elevation: const WidgetStatePropertyAll(0),
+          shadowColor: const WidgetStatePropertyAll(Colors.transparent),
+        );
+
       case DSButtonVariant.dark:
-        return DSButtonTokens.darkLabel;
+        return ButtonStyle(
+          minimumSize: const WidgetStatePropertyAll(minSize),
+          padding: WidgetStatePropertyAll(DSButtonTokens.padding),
+          shape: WidgetStatePropertyAll(shape),
+          backgroundColor: WidgetStateProperty.resolveWith(
+            (s) => _byState<Color>(
+              s,
+              enabled: DSButtonTokens.darkBg,
+              disabled: DSButtonTokens.disable,
+            ),
+          ),
+          foregroundColor: WidgetStateProperty.resolveWith(
+            (s) => _byState<Color>(
+              s,
+              enabled: DSButtonTokens.darkLabel,
+              disabled: DSButtonTokens.disable,
+            ),
+          ),
+          elevation: const WidgetStatePropertyAll(0),
+          shadowColor: const WidgetStatePropertyAll(Colors.transparent),
+        );
     }
   }
 }
