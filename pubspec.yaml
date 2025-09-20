@@ -91,6 +91,7 @@ flutter:
     - assets/images/logo/minds2_main_logo.png
     - assets/images/logo/minds2_white_logo.png
     - assets/images/logo/minds2_without_slogan.png
+    - assets/images/auth/robot_test.webp
     - assets/translations/
 
 

@@ -13,7 +13,7 @@ class AuthController extends ChangeNotifier {
   final IAuthFacade _authFacade;
   AuthStatus status = AuthStatus.unknown;
 
-  Future<void> bootstrap() async {
+  Future<User?> bootstrap() async {
     User? user;
     try {
       user = await _authFacade.getMe();
@@ -25,6 +25,7 @@ class AuthController extends ChangeNotifier {
         ? AuthStatus.authenticated
         : AuthStatus.unauthenticated;
     notifyListeners();
+    return user;
   }
 
   // Future<void> login(String email, String pass) async {

@@ -57,11 +57,11 @@ class DSText extends StatelessWidget {
         this.maxLines,
         this.overflow,
         this.decoration,
-        this.oneLine = false,   // fuerza 1 línea + elipsis si true
-        this.maxScaleFactor,    // clamp del escalado del sistema
+        this.oneLine = false, // fuerza 1 línea + elipsis si true
+        this.maxScaleFactor, // clamp del escalado del sistema
       });
 
-  // ────────────────── FACTORIES (todas exponen overflow/maxLines) ──────────────────
+  // ────────────────── FACTORIES ──────────────────
   factory DSText.tables(
       String data, {
         Key? key,
@@ -70,6 +70,7 @@ class DSText extends StatelessWidget {
         double? maxScaleFactor,
         int? maxLines,
         TextOverflow? overflow,
+        TextAlign? textAlign,
       }) =>
       DSText(
         data,
@@ -80,6 +81,7 @@ class DSText extends StatelessWidget {
         maxScaleFactor: maxScaleFactor,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: textAlign,
       );
 
   factory DSText.heading1(
@@ -90,6 +92,7 @@ class DSText extends StatelessWidget {
         double? maxScaleFactor,
         int? maxLines,
         TextOverflow? overflow,
+        TextAlign? textAlign,
       }) =>
       DSText(
         data,
@@ -100,6 +103,7 @@ class DSText extends StatelessWidget {
         maxScaleFactor: maxScaleFactor,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: textAlign,
       );
 
   factory DSText.heading2(
@@ -110,6 +114,7 @@ class DSText extends StatelessWidget {
         double? maxScaleFactor,
         int? maxLines,
         TextOverflow? overflow,
+        TextAlign? textAlign,
       }) =>
       DSText(
         data,
@@ -120,6 +125,7 @@ class DSText extends StatelessWidget {
         maxScaleFactor: maxScaleFactor,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: textAlign,
       );
 
   factory DSText.heading3(
@@ -130,6 +136,7 @@ class DSText extends StatelessWidget {
         double? maxScaleFactor,
         int? maxLines,
         TextOverflow? overflow,
+        TextAlign? textAlign,
       }) =>
       DSText(
         data,
@@ -140,6 +147,7 @@ class DSText extends StatelessWidget {
         maxScaleFactor: maxScaleFactor,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: textAlign,
       );
 
   factory DSText.heading4(
@@ -150,6 +158,7 @@ class DSText extends StatelessWidget {
         double? maxScaleFactor,
         int? maxLines,
         TextOverflow? overflow,
+        TextAlign? textAlign,
       }) =>
       DSText(
         data,
@@ -160,6 +169,7 @@ class DSText extends StatelessWidget {
         maxScaleFactor: maxScaleFactor,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: textAlign,
       );
 
   factory DSText.overline(
@@ -170,6 +180,7 @@ class DSText extends StatelessWidget {
         double? maxScaleFactor,
         int? maxLines,
         TextOverflow? overflow,
+        TextAlign? textAlign,
       }) =>
       DSText(
         data,
@@ -180,6 +191,7 @@ class DSText extends StatelessWidget {
         maxScaleFactor: maxScaleFactor,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: textAlign,
       );
 
   factory DSText.navBar(
@@ -190,6 +202,7 @@ class DSText extends StatelessWidget {
         double? maxScaleFactor,
         int? maxLines,
         TextOverflow? overflow,
+        TextAlign? textAlign,
       }) =>
       DSText(
         data,
@@ -200,6 +213,7 @@ class DSText extends StatelessWidget {
         maxScaleFactor: maxScaleFactor,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: textAlign,
       );
 
   factory DSText.filters(
@@ -210,6 +224,7 @@ class DSText extends StatelessWidget {
         double? maxScaleFactor,
         int? maxLines,
         TextOverflow? overflow,
+        TextAlign? textAlign,
       }) =>
       DSText(
         data,
@@ -220,6 +235,7 @@ class DSText extends StatelessWidget {
         maxScaleFactor: maxScaleFactor,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: textAlign,
       );
 
   factory DSText.input(
@@ -230,6 +246,7 @@ class DSText extends StatelessWidget {
         double? maxScaleFactor,
         int? maxLines,
         TextOverflow? overflow,
+        TextAlign? textAlign,
       }) =>
       DSText(
         data,
@@ -240,6 +257,7 @@ class DSText extends StatelessWidget {
         maxScaleFactor: maxScaleFactor,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: textAlign,
       );
 
   factory DSText.labels(
@@ -250,6 +268,7 @@ class DSText extends StatelessWidget {
         double? maxScaleFactor,
         int? maxLines,
         TextOverflow? overflow,
+        TextAlign? textAlign,
       }) =>
       DSText(
         data,
@@ -260,16 +279,17 @@ class DSText extends StatelessWidget {
         maxScaleFactor: maxScaleFactor,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: textAlign,
       );
 
-  /// Alias práctico para barras laterales (siempre 1 línea)
   factory DSText.labels1L(
       String data, {
         Key? key,
         Color? color,
         double? maxScaleFactor,
-        int? maxLines,               // por consistencia, aunque 1 línea
-        TextOverflow? overflow,      // idem (default ellipsis)
+        int? maxLines,
+        TextOverflow? overflow,
+        TextAlign? textAlign,
       }) =>
       DSText(
         data,
@@ -280,16 +300,17 @@ class DSText extends StatelessWidget {
         maxScaleFactor: maxScaleFactor,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: textAlign,
       );
 
-  /// Para botones dejamos 1 línea por defecto
   factory DSText.button(
       String data, {
         Key? key,
         Color? color,
         double? maxScaleFactor,
-        int? maxLines,               // por consistencia, aunque 1 línea
-        TextOverflow? overflow,      // idem
+        int? maxLines,
+        TextOverflow? overflow,
+        TextAlign? textAlign,
       }) =>
       DSText(
         data,
@@ -300,6 +321,7 @@ class DSText extends StatelessWidget {
         maxScaleFactor: maxScaleFactor,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: textAlign,
       );
 
   factory DSText.paragraph(
@@ -310,6 +332,7 @@ class DSText extends StatelessWidget {
         double? maxScaleFactor,
         int? maxLines,
         TextOverflow? overflow,
+        TextAlign? textAlign,
       }) =>
       DSText(
         data,
@@ -320,6 +343,7 @@ class DSText extends StatelessWidget {
         maxScaleFactor: maxScaleFactor,
         maxLines: maxLines,
         overflow: overflow,
+        textAlign: textAlign,
       );
 
   // ───────────────────────── CAMPOS ─────────────────────────
@@ -342,7 +366,8 @@ class DSText extends StatelessWidget {
     final effectiveMaxLines =
         maxLines ?? (oneLine || variant == DSTextVariant.button ? 1 : null);
     final effectiveOverflow =
-        overflow ?? (oneLine || variant == DSTextVariant.button ? TextOverflow.ellipsis : null);
+        overflow ??
+            (oneLine || variant == DSTextVariant.button ? TextOverflow.ellipsis : null);
     final softWrap = oneLine ? false : null;
 
     final scaler = MediaQuery.textScalerOf(context);

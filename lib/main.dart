@@ -13,10 +13,14 @@ Future<void> main() async {
   final messengerKey = GlobalKey<ScaffoldMessengerState>();
   Bloc.observer = AppBlocObserver(messengerKey);
   final authController = getIt<AuthController>();
-  await authController.bootstrap();
+  final appUser = await authController.bootstrap();
   runApp(
     MultiBlocProvider(
-      providers: [BlocProvider.value(value: getIt<AuthBloc>())],
+      providers: [
+        BlocProvider.value(
+          value: getIt<AuthBloc>()..add(AuthEvent.started(appUser: appUser)),
+        ),
+      ],
       child: EasyLocalization(
         supportedLocales: const [Locale("en", "US"), Locale("es", "MX")],
         path: "assets/translations",

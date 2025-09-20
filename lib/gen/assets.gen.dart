@@ -14,6 +14,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// Directory path: assets/images/auth
+  $AssetsImagesAuthGen get auth => const $AssetsImagesAuthGen();
+
   /// Directory path: assets/images/logo
   $AssetsImagesLogoGen get logo => const $AssetsImagesLogoGen();
 }
@@ -29,6 +32,17 @@ class $AssetsTranslationsGen {
 
   /// List of all assets
   List<String> get values => [enUS, esMX];
+}
+
+class $AssetsImagesAuthGen {
+  const $AssetsImagesAuthGen();
+
+  /// File path: assets/images/auth/robot_test.webp
+  AssetGenImage get robotTest =>
+      const AssetGenImage('assets/images/auth/robot_test.webp');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [robotTest];
 }
 
 class $AssetsImagesLogoGen {
