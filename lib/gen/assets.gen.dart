@@ -37,12 +37,16 @@ class $AssetsTranslationsGen {
 class $AssetsImagesAuthGen {
   const $AssetsImagesAuthGen();
 
+  /// File path: assets/images/auth/laptop_test.png
+  AssetGenImage get laptopTest =>
+      const AssetGenImage('assets/images/auth/laptop_test.png');
+
   /// File path: assets/images/auth/robot_test.webp
   AssetGenImage get robotTest =>
       const AssetGenImage('assets/images/auth/robot_test.webp');
 
   /// List of all assets
-  List<AssetGenImage> get values => [robotTest];
+  List<AssetGenImage> get values => [laptopTest, robotTest];
 }
 
 class $AssetsImagesLogoGen {

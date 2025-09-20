@@ -12,6 +12,7 @@ class BodyLogin extends StatelessWidget {
       children: [
         DSAuthHero(
           backgroundImage: Assets.images.auth.robotTest.provider(),
+          centerImage: Assets.images.auth.laptopTest.provider(),
           titlePrimary: "Welcome",
           titleSecondary: "Back",
         ),

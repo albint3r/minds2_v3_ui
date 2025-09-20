@@ -11,12 +11,14 @@ class DSAuthHero extends StatelessWidget {
     required this.titlePrimary,
     required this.titleSecondary,
     required this.backgroundImage,
+    this.centerImage, // 👈 imagen opcional en el centro
     this.width = 1000,
   });
 
   final String titlePrimary;
   final String titleSecondary;
   final ImageProvider backgroundImage;
+  final ImageProvider? centerImage;
   final double width;
 
   @override
@@ -34,9 +36,7 @@ class DSAuthHero extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          // Fondo imagen
           Image(image: backgroundImage, fit: BoxFit.cover),
-          // Overlay degradado
           DecoratedBox(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -46,20 +46,33 @@ class DSAuthHero extends StatelessWidget {
               ),
             ),
           ),
-
-          // Contenido
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const DSGap.xl(),
+              // Logo arriba a la izquierda
               Padding(
-                padding: const EdgeInsets.all(DSSpacing.xl),
+                padding: const EdgeInsets.only(left: DSSpacing.md),
+                child: Assets.images.logo.minds2LogoSymbol.image(height: 36),
+              ),
+              const DSGap.xl(),
+              // Títulos
+              Center(
                 child: DsDualText(
                   primary: titlePrimary,
                   secondary: titleSecondary,
                 ),
               ),
+
+              // Imagen central opcional
+              if (centerImage != null)
+                Expanded(
+                  child: Center(
+                    child: Image(image: centerImage!, fit: BoxFit.contain),
+                  ),
+                ),
               const Spacer(),
+              // Logo abajo a la derecha
               Padding(
                 padding: const EdgeInsets.only(right: DSSpacing.xl),
                 child: Align(
