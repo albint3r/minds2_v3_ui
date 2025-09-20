@@ -3,7 +3,6 @@ import "dart:io";
 import "package:dio/dio.dart";
 import "package:injectable/injectable.dart";
 import "package:l/l.dart";
-import "package:minds2_ui_v3/core/infrastructure/app_config.dart";
 import "package:minds2_ui_v3/core/infrastructure/shared_pref.dart";
 
 @injectable
@@ -19,10 +18,11 @@ class AuthInterceptors extends Interceptor {
   ) async {
     // If Token exist add header to
     final sessionToken = _pref.getToken();
+    // options.headers[HttpHeaders.authorizationHeader] =
+    // "Bearer ${AppConfig.devToken}";
     // Add Session token to navigation user headers
     if (sessionToken.isNotEmpty) {
       options.headers[HttpHeaders.authorizationHeader] = sessionToken;
-
     }
     super.onRequest(options, handler);
   }

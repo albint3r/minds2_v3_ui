@@ -10,11 +10,14 @@ part 'auth_event.dart';
 
 part 'auth_state.dart';
 
-@injectable
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc(IAuthFacade facade) : super(AuthState.initial()) {
-    on<_Started>((event, emit) {
-      emit(state.copyWith(isLoading: false, appUser: event.appUser));
+  AuthBloc(IAuthFacade facade, {@ignoreParam User? appUser})
+    : super(AuthState.initial().copyWith(appUser: appUser, isLoading: false)) {
+    on<_Started>((e, emit) {
+      print('*-' * 100);
+      print("App-User: ${state.appUser}");
+      print('*-' * 100);
+      // emit(state.copyWith(isLoading: false, appUser: e.appUser));
     });
   }
 }

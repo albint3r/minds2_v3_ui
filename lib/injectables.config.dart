@@ -18,7 +18,6 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 import 'auth/aplication/auth_bloc.dart' as _i979;
 import 'auth/domain/i_auth_data_source.dart' as _i253;
 import 'auth/domain/i_auth_facade.dart' as _i388;
-import 'auth/infrasctructure/auth_controller.dart' as _i1057;
 import 'auth/infrasctructure/auth_data_source_impl.dart' as _i513;
 import 'auth/infrasctructure/auth_facade_impl.dart' as _i250;
 import 'auth/infrasctructure/auth_interceptors.dart' as _i615;
@@ -72,12 +71,12 @@ Future<_i174.GetIt> $initGetIt(
   gh.factory<_i388.IAuthFacade>(
     () => _i250.AuthFacadeImpl(gh<_i253.IAuthDataSource>()),
   );
-  gh.singleton<_i1057.AuthController>(
-    () => _i1057.AuthController(gh<_i388.IAuthFacade>()),
+  await gh.singletonAsync<_i979.AuthBloc>(
+    () => registerModule.authBloc(gh<_i388.IAuthFacade>()),
+    preResolve: true,
   );
-  gh.factory<_i979.AuthBloc>(() => _i979.AuthBloc(gh<_i388.IAuthFacade>()));
   gh.lazySingleton<_i110.AppRouter>(
-    () => _i110.AppRouter(gh<_i1057.AuthController>()),
+    () => _i110.AppRouter(gh<_i979.AuthBloc>()),
   );
   return getIt;
 }

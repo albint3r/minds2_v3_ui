@@ -1,73 +1,71 @@
 import "package:flutter/widgets.dart";
 import "package:go_router/go_router.dart";
 import "package:injectable/injectable.dart";
-import "package:l/l.dart";
-import "package:minds2_ui_v3/auth/infrasctructure/auth_controller.dart";
+import "package:l/l.dart"; // 👈 logger
+import "package:minds2_ui_v3/auth/aplication/auth_bloc.dart";
+import "package:minds2_ui_v3/auth/domain/user.dart";
 import "package:minds2_ui_v3/auth/presentation/login/login_page.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/design_system_gallery_page.dart";
 
 @lazySingleton
 class AppRouter {
-  AppRouter(this._auth) {
-    _router = GoRouter(
-      refreshListenable: _auth,
-      // si es para el DS, puedes arrancar directo en /gallery
-      initialLocation: "/gallery",
-      routes: <RouteBase>[
-        // ✅ la URL que pediste
-        GoRoute(
-          path: "/gallery",
-          name: "gallery",
-          builder: (_, __) => const DesignSystemGalleryPage(),
-        ),
-        // ✅ la URL que pediste
-        GoRoute(
-          path: "/login",
-          name: "login",
-          builder: (_, __) => const LogInPage(),
-        ),
+  AppRouter(this._authBloc)
+    : _router = GoRouter(
+        initialLocation: "/gallery",
+        routes: [
+          GoRoute(
+            path: "/gallery",
+            name: "gallery",
+            builder: (_, __) => const DesignSystemGalleryPage(),
+          ),
+          GoRoute(
+            path: "/login",
+            name: "login",
+            builder: (_, __) => const LogInPage(),
+          ),
+          GoRoute(path: "/", redirect: (_, __) => "/login"),
+        ],
+        redirect: (context, state) {
+          final isAuthed = _authBloc.state.appUser is User;
+          final loggingIn = state.matchedLocation == "/login";
+          final from = state.uri.queryParameters["from"];
 
-        // root → /gallery (ajústalo a /home si quieres para la app completa)
-        GoRoute(path: "/", redirect: (_, __) => "/login"),
+          l.d(
+            "[GoRouter] redirect check:"
+            "\n  - requested : ${state.matchedLocation}"
+            "\n  - isAuthed  : $isAuthed"
+            "\n  - loggingIn : $loggingIn"
+            "\n  - from      : $from",
+          );
 
-        // Ejemplos (descomenta cuando tengas páginas):
-        // GoRoute(path: '/login', builder: (_, __) => const LoginPage()),
-        // GoRoute(path: '/home',  builder: (_, __) => const HomePage()),
-      ],
-      redirect: (context, state) {
-        final loggingIn = state.matchedLocation == "/login";
-        final isAuthed = _auth.status == AuthStatus.authenticated;
-        final from = state.uri.queryParameters["from"];
+          if (!isAuthed && !loggingIn) {
+            final encoded = Uri.encodeComponent(state.uri.toString());
+            l.i("🔒 Not authed → redirect to /login?from=$encoded");
+            return "/login?from=$encoded";
+          }
 
-        l.d("[GoRouter] redirect check:");
-        l.d(" - requested: ${state.matchedLocation}");
-        l.d(" - isAuthed: $isAuthed");
-        l.d(" - loggingIn: $loggingIn");
-        l.d(" - from param: $from");
+          if (isAuthed && loggingIn) {
+            final target = from ?? "/home";
+            l.i("✅ Authed on /login → redirect to $target");
+            return target;
+          }
 
-        // si no está logueado y no va a login → mándalo a login
-        if (!isAuthed && !loggingIn) {
-          final encoded = Uri.encodeComponent(state.uri.toString());
-          l.d("🔒 Redirecting to /login?from=$encoded");
-          return "/login?from=$encoded";
-        }
-
-        // si ya está logueado pero está en login → mándalo a home o from
-        if (isAuthed && loggingIn) {
-          final target = from ?? "/home";
-          l.d("✅ Authenticated. Redirecting to $target");
-          return target;
-        }
-
-        l.d("➡️ No redirect");
-        return null;
-      },
-      errorBuilder: (_, s) => Text("Routing error: ${s.error}"),
+          l.v("➡️ No redirect");
+          return null;
+        },
+        errorBuilder: (_, s) {
+          l.e("[GoRouter] error: ${s.error}");
+          return Text("Routing error: ${s.error}");
+        },
+      ) {
+    l.i(
+      "[AppRouter] initialized "
+      "(initialLocation=/gallery, authed=${_authBloc.state.appUser != null})",
     );
   }
 
-  final AuthController _auth;
-  late final GoRouter _router;
+  final AuthBloc _authBloc;
+  final GoRouter _router;
 
   GoRouter get router => _router;
 }

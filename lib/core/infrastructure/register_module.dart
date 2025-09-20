@@ -5,6 +5,8 @@ import "package:dio_intercept_to_curl/dio_intercept_to_curl.dart";
 import "package:flutter/foundation.dart";
 import "package:injectable/injectable.dart";
 import "package:l/l.dart";
+import "package:minds2_ui_v3/auth/aplication/auth_bloc.dart";
+import "package:minds2_ui_v3/auth/domain/i_auth_facade.dart";
 import "package:minds2_ui_v3/auth/infrasctructure/auth_interceptors.dart";
 import "package:minds2_ui_v3/core/infrastructure/app_config.dart";
 import "package:shared_preferences/shared_preferences.dart";
@@ -14,12 +16,18 @@ abstract class RegisterModule {
   @preResolve
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
+  @preResolve
   @singleton
-  Uri getUri() => Uri(
-    scheme: AppConfig.scheme,
-    host: AppConfig.host,
-    port: AppConfig.port,
-  );
+  Future<AuthBloc> authBloc(IAuthFacade facade) async {
+    // Esto inicializa antes de que todo
+    // lo cual permite que podamos injectar esto a el router
+    final appUser = await facade.getMe();
+    return AuthBloc(facade, appUser: appUser);
+  }
+
+  @singleton
+  Uri getUri() =>
+      Uri(scheme: AppConfig.scheme, host: AppConfig.host, port: AppConfig.port);
 
   @injectable
   BaseOptions getDioBaseOptions(Uri uri) {
