@@ -24,7 +24,6 @@ class DSAuthHero extends StatelessWidget {
     final g = DSColors.secondary.gradient;
     final size = MediaQuery.of(context).size;
     final width = size.width;
-    final height = size.height;
     const alpha = 0.90;
     final overlayColors = <Color>[
       g[0].withValues(alpha: alpha),
