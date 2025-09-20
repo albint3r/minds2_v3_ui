@@ -15,6 +15,9 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import 'auth/aplication/auth_controller.dart' as _i722;
+import 'auth/domain/i_auth_data_source.dart' as _i253;
+import 'auth/infrasctructure/auth_data_source_impl.dart' as _i513;
 import 'auth/infrasctructure/auth_interceptors.dart' as _i615;
 import 'core/infrastructure/app_bloc_observer.dart' as _i610;
 import 'core/infrastructure/register_module.dart' as _i658;
@@ -58,6 +61,12 @@ Future<_i174.GetIt> $initGetIt(
       gh<Iterable<_i361.Interceptor>>(),
       gh<_i615.AuthInterceptors>(),
     ),
+  );
+  gh.factory<_i253.IAuthDataSource>(
+    () => _i513.AuthDataSourceImpl(gh<_i361.Dio>()),
+  );
+  gh.singleton<_i722.AuthController>(
+    () => _i722.AuthController(gh<_i253.IAuthDataSource>()),
   );
   return getIt;
 }

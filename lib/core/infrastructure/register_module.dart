@@ -15,13 +15,11 @@ abstract class RegisterModule {
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
   @singleton
-  Uri getUri() {
-    return Uri(
-      scheme: AppConfig.scheme,
-      host: AppConfig.apiUrl,
-      port: AppConfig.port,
-    );
-  }
+  Uri getUri() => Uri(
+    scheme: AppConfig.scheme,
+    host: AppConfig.host,
+    port: AppConfig.port,
+  );
 
   @injectable
   BaseOptions getDioBaseOptions(Uri uri) {
@@ -44,10 +42,10 @@ abstract class RegisterModule {
 
   @singleton
   Dio getDio(
-      BaseOptions options,
-      Iterable<Interceptor> interceptors,
-      AuthInterceptors auth,
-      ) {
+    BaseOptions options,
+    Iterable<Interceptor> interceptors,
+    AuthInterceptors auth,
+  ) {
     final dio = Dio(options);
     dio.interceptors
       ..addAll(interceptors)
