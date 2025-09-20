@@ -1,6 +1,6 @@
-part of 'auth_bloc.dart';
+part of "auth_bloc.dart";
 
 @freezed
-class AuthEvent with _$AuthEvent {
-  const factory AuthEvent.started() = _Started;
+abstract class AuthEvent with _$AuthEvent {
+  const factory AuthEvent.started({User? appUser}) = _Started;
 }

@@ -1,7 +1,8 @@
 import "package:flutter/widgets.dart";
 import "package:go_router/go_router.dart";
 import "package:injectable/injectable.dart";
-import "package:minds2_ui_v3/auth/aplication/auth_controller.dart";
+import "package:l/l.dart";
+import "package:minds2_ui_v3/auth/infrasctructure/auth_controller.dart";
 import "package:minds2_ui_v3/core/presentation/design_system/design_system_gallery_page.dart";
 
 @lazySingleton
@@ -28,6 +29,9 @@ class AppRouter {
       ],
       redirect: (context, state) {
         // 🔓 deja pasar /gallery (y / que redirige a /gallery) sin auth
+        l.i("-----> [redirect] $state");
+        l.i("-----> [_auth] ${_auth.status}");
+
         if (state.matchedLocation.startsWith("/gallery") ||
             state.matchedLocation == "/") {
           return null;

@@ -1,26 +1,26 @@
 import "package:flutter/foundation.dart";
 import "package:injectable/injectable.dart";
 import "package:l/l.dart";
-import "package:minds2_ui_v3/auth/domain/i_auth_data_source.dart";
+import "package:minds2_ui_v3/auth/domain/i_auth_facade.dart";
 import "package:minds2_ui_v3/auth/domain/user.dart";
 
 enum AuthStatus { unknown, unauthenticated, authenticated }
 
 @singleton
 class AuthController extends ChangeNotifier {
-  AuthController(this._repo);
+  AuthController(this._authFacade);
 
-  final IAuthDataSource _repo;
+  final IAuthFacade _authFacade;
   AuthStatus status = AuthStatus.unknown;
 
   Future<void> bootstrap() async {
     User? user;
     try {
-      user = await _repo.getMe();
+      user = await _authFacade.getMe();
     } catch (e) {
       user = null;
     }
-    l.i("User return $user");
+    l.i("-----> User return $user");
     status = user is User
         ? AuthStatus.authenticated
         : AuthStatus.unauthenticated;
